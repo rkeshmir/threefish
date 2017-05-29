@@ -1,0 +1,49 @@
+<uib-accordion close-others="false" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <uib-accordion-group panel-class="panel-info" is-open="true">
+        <uib-accordion-heading>
+            <i class="fa fa-tag"></i>&nbsp;
+            <span ng-bind="vm.method == 'create' ? 'افزودن دسته‌بندی' : 'ویرایش دسته‌بندی'"></span>
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[0].isOpen, 'fa-chevron-left': !accordion.groups[0].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form name="categoryForm">
+                <div class="form-group">
+                    <label for="name">
+                        نام دسته‌بندی
+                    </label>
+                    <input type="text" class="form-control" id="name" name="name" required ng-model="vm.category.name">
+                </div>
+                <div class="form-group">
+                    <img ng-if="vm.category.picture.id" class="pull-left"
+                         style="border: ridge 1px blanchedalmond;margin: 5px auto;"
+                         ng-src="{{vm.host}}{{vm.category.picture.url + '?data=' + vm.date}}"
+                         width="60">
+                    <label for="picture-input">
+                        <span class="btn btn-default">
+                            <i class="fa fa-file-picture-o"></i>&nbsp;
+                            <span ng-bind="vm.cropper.sourceImage.name || 'انتخاب تصویر'"></span>
+                            &nbsp;
+                            <span ng-bind="'(حجم: ' + (vm.cropper.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="vm.cropper.sourceImage.size"></span>
+                        </span>
+                    </label>
+                    <input name="picture" class="form-control" id="picture-input" type="file" img-cropper-fileread
+                           image="vm.cropper.sourceImage" style="position: fixed; top: -100em"/>
+                    <div ng-show="vm.cropper.sourceImage">
+                        <canvas width="500" height="300" id="canvas" image-cropper image="vm.cropper.sourceImage"
+                                cropped-image="vm.cropper.croppedImage" crop-width="300" crop-height="300"
+                                keep-aspect="false" touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" ng-click="vm.save()"
+                            ng-disabled="categoryForm.$invalid || (categoryForm.$pristine && !vm.cropper) || (!vm.cropper && vm.method == 'create')">
+                        <i class="fa fa-check"></i>
+                        <span ng-bind="vm.method == 'update' ? 'ویرایش' : 'ایجاد دسته‌بندی'"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

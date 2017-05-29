@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header">
+                <span data-translate="APP.MODULES.BANNER.TITLE"></span>
+                <a class="btn btn-primary pull-left" ui-sref="root.createUpdateBanner({'method':'create'})">
+                    <i class="fa fa-plus-square"></i>
+                    <span ng-bind="('APP.ACTIONS.ADD'|translate) + ' ' + ('APP.MODULES.BANNER.BANNER'|translate)"></span>
+
+                </a>
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <table ng-table="vm.bannerTable" width="100%" class="table table-striped table-responsive table-hover"
+               template-pagination="app/directives/ng-table/pagination-tpl.html"
+               id="bannerTable">
+            <tr ng-repeat="banner in $data">
+                <td title="" ng-bind="((params.page()-1)*10+($index + 1))|pNumber"></td>
+                <td class="text-center" data-title="'APP.MODULES.BANNER.PICTURE'|translate">
+                    <img ng-src="{{vm.host}}{{banner.url}}"
+                         width="100">
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.BANNER.TITLE'|translate">
+                    <div id="show-caption" ng-show="!banner.editing" ng-bind="banner.label">&nbsp;
+                    </div>
+                    <div id="edit-caption" ng-show="banner.editing">
+                        <textarea type="text" class="form-control" ng-model="banner.label"
+                                  data-ng-disabled="vm.loading"></textarea>&nbsp;
+                        <i class="fa fa-check-square pull-left m-t-1 f-2r" ng-show="!vm.loading"
+                           ng-attr-title="{{'APP.ACTIONS.SAVE'|translate}}" ng-click="vm.update(banner)"></i>
+                        <i class="fa fa-spinner pull-left m-t-1 f-2r" ng-show="vm.loading"></i>
+                    </div>
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.BANNER.APP_BANNER'|translate">
+                    <a target="_blank" ui-sref="root.createUpdateApplication({method:'update',id:banner.contentId})"
+                       ng-if="banner.contentId">
+                        <span class="fa fa-android" ng-attr-title="{{'APP.MODULES.BANNER.SHOW_APP'|translate}}"></span>
+                    </a>
+                    <span ng-if="!banner.contentId" ng-attr-title="{{'APP.MODULES.BANNER.NO'|translate}}"></span>
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.BANNER.PUBLISH'|translate">
+                    <input class="form-control" type="checkbox" ng-model="banner.published" ng-disabled="vm.loading"
+                           ng-change="vm.publish(banner)">
+                </td>
+                <td class="text-center" data-title="">
+                    <i class="fa fa-trash inline c-pointer danger m-r-1 m-l-1"
+                       data-ng-show="!banner.contentId && !vm.loading" ng-click="vm.delete(banner.id)"></i>
+                    <i class="fa fa-edit inline c-pointer info m-r-1 m-l-1"
+                       data-ng-show="!vm.loading && !banner.editing" ng-click="banner.editing = true"></i>
+                    <i class="fa fa-spinner inline warning m-r-1 m-l-1" ng-show="vm.loading"></i>
+                    <i class="fa fa-spinner inline warning m-r-1 m-l-1" ng-show="vm.loading"></i>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

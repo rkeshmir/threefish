@@ -1,0 +1,68 @@
+<div class="navbar-default sidebar" role="navigation" ng-show="showNav">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+            <!--<sidebar-search></sidebar-search>-->
+
+            <li data-ui-sref-active="active"
+                data-ng-repeat="item in vm.data.items"
+                data-ng-show="vm.hasAccess(item.authorities)">
+
+                <a data-ng-if="!item.state"
+                   data-ng-click="vm.check($index)">
+                    <i class="{{item.icon}}"></i>
+                    <span data-ng-bind="item.caption|translate"></span>
+                    <span class="fa arrow"
+                          data-ng-show="item.children.length"></span>
+                </a>
+                <a data-ng-if="item.state"
+                   data-ui-sref="{{item.state}}({{item.params}})"
+                   data-ng-click="vm.check($index)">
+                    <i class="{{item.icon}}"></i>
+                    <span data-ng-bind="item.caption|translate"></span>
+                    <span class="fa arrow"
+                          data-ng-show="item.children.length"></span>
+                </a>
+                <!--nav-second-level-->
+                <ul class="nav nav-second-level"
+                    data-uib-collapse="vm.collapseVar!=$index">
+
+                    <li data-ui-sref-active="active"
+                        data-ng-repeat="field in item.children">
+                        <a data-ng-if="!field.state"
+                           data-ng-click="vm.multiCheck($index)">
+                            <i class="{{field.icon}}"></i>
+                            <span data-ng-bind="field.caption|translate"></span>
+                            <span class="fa arrow"
+                                  data-ng-show="field.children.length"></span>
+                        </a>
+                        <a data-ng-if="field.state"
+                           data-ui-sref="{{field.state}}({{field.params}})"
+                           data-ng-click="vm.multiCheck($index)">
+                            <i class="{{field.icon}}"></i>
+                            <span data-ng-bind="field.caption|translate"></span>
+                            <span class="fa arrow"
+                                  data-ng-show="field.children.length"></span>
+                        </a>
+                        <!--nav-third-level-->
+                        <ul class="nav nav-third-level"
+                            data-uib-collapse="vm.multiCollapseVar!=$index">
+                            <li data-ui-sref-active="active"
+                                data-ng-repeat="child in field.children">
+                                <a data-ui-sref="{{child.state}}({{child.params}})">
+                                    <i class="{{child.icon}}"></i>
+                                    <span data-ng-bind="child.caption|translate"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
+
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

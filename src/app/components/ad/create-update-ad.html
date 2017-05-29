@@ -1,0 +1,95 @@
+<uib-accordion close-others="false" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <uib-accordion-group panel-class="panel-info" is-open="true">
+        <uib-accordion-heading>
+            <i class="fa fa-tag"></i>&nbsp;
+            <span ng-bind="vm.method == 'create' ? 'افزودن تبلیغات' : 'ویرایش تبلیغات'"></span>
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[0].isOpen, 'fa-chevron-left': !accordion.groups[0].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form name="adForm">
+                <div class="form-group col-lg-12">
+                    <label for="label">
+                        عنوان تبلیغات
+                    </label>
+                    <textarea class="form-control" id="label" name="label"
+                              ng-model="vm.ad.label"></textarea>
+                </div>
+                <div class="form-group col-lg-12">
+                    <img ng-if="vm.ad.picture.id" class="pull-left"
+                         style="border: ridge 1px blanchedalmond;margin: 5px auto;"
+                         ng-src="{{vm.host}}{{vm.ad.picture.url + '?data=' + vm.date}}"
+                         width="60">
+                    <label for="picture-input">
+                        <span class="btn btn-default">
+                            <i class="fa fa-file-picture-o"></i>&nbsp;
+                            <span ng-bind="vm.cropper.sourceImage.name || 'انتخاب تصویر'"></span>
+                            &nbsp;
+                            <span ng-bind="'(حجم: ' + (vm.cropper.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="vm.cropper.sourceImage.size"></span>
+                        </span>
+                    </label>
+                    <input name="picture" class="form-control" id="picture-input" type="file" img-cropper-fileread
+                           image="vm.cropper.sourceImage" style="position: fixed; top: -100em"/>
+                    <div ng-show="vm.cropper.sourceImage">
+                        <canvas width="{{vm.cropperWidth}}" id="canvas" image-cropper image="vm.cropper.sourceImage"
+                                cropped-image="vm.cropper.croppedImage"
+                                crop-width="(vm.bounds.right - vm.bounds.left)"
+                                crop-height="(vm.bounds.top - vm.bounds.bottom)"
+                                keep-aspect="false" touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+                    </div>
+                </div>
+                <div class="form-group col-lg-5 col-lg-offset-2 col-xs-12 pull-right"
+                     ng-class="{'has-error': adForm.fromDate.$invalid && adForm.fromDate.$dirty}">
+                    <label for="from-date">
+                        نمایش از تاریخ
+                    </label>
+                    <adm-dtp ng-model="vm.ad.fromDate">
+                        <input class="form-control" ng-model='vm.ad.fromDate' name="fromDate" required
+                               id="from-date" dtp-input>
+                    </adm-dtp>
+                </div>
+                <div class="form-group col-lg-5 col-xs-12 pull-right"
+                     ng-class="{'has-error': adForm.toDate.$invalid && adForm.toDate.$dirty}">
+                    <label for="to-date">
+                        نمایش تا تاریخ
+                    </label>
+                    <adm-dtp ng-model="vm.ad.toDate">
+                        <input class="form-control" ng-model='vm.ad.toDate' name="toDate" required
+                               id="to-date" dtp-input>
+                    </adm-dtp>
+                </div>
+                <div class="form-group col-lg-5 col-lg-offset-2 col-xs-12 pull-right">
+                    <label class="control-label" for="user"
+                           data-translate="APP.MODULES.AD.USER"></label>
+                    <ui-select ng-model="vm.ad.user" theme="selectize" required="" name="user"
+                               id="user" title="انتخاب کاربر">
+                        <ui-select-match placeholder="یک کاربر را جستجو و انتخاب کنید ...">
+                            {{$select.selected.completeName}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="user in vm.users | filter: $select.search">
+                            <div ng-bind-html="user.completeName | highlight: $select.search"></div>
+                            <small ng-bind-html="user.url | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group col-lg-5 col-xs-12 pull-right"
+                     ng-class="{'has-error': adForm.url.$invalid && adForm.url.$dirty}">
+                    <label for="url" data-translate="APP.MODULES.AD.URL">
+
+                    </label>
+                    <input class="form-control" placeholder="لینک" ng-model='vm.ad.url' required
+                           name="url" type="url" id="url">
+
+                </div>
+                <div class="form-group col-lg-12 col-xs-12">
+                    <button class="btn btn-default" ng-click="vm.save()"
+                            ng-disabled="adForm.$invalid || (adForm.$pristine && !vm.cropper) || (!vm.cropper && vm.method == 'create')">
+                        <i class="fa fa-check"></i>
+                        <span ng-bind="vm.method == 'update' ? 'ویرایش' : 'ایجاد تبلیغات'"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

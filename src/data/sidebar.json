@@ -1,0 +1,75 @@
+{
+  "items": [
+    {
+      "caption": "APP.MODULES.HOME.TITLE",
+      "icon": "fa fa-dashboard fa-fw",
+      "state": "root.home",
+      "params": {},
+      "data": {
+        "roles": [
+          "admin"
+        ]
+      },
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.USER.TITLE",
+      "icon": "fa fa-users fa-fw",
+      "state": "root.user",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.APPLICATION.TITLE",
+      "icon": "fa fa-android fa-fw",
+      "state": "root.application",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.APPLICATION.SIMURGH_TITLE",
+      "icon": "fa fa-android fa-fw",
+      "state": "root.createUpdateApplication",
+      "params": {
+        "method": "update",
+        "id": "simorgh"
+      },
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.BANNER.TITLE",
+      "icon": "fa fa-photo fa-fw",
+      "state": "root.banner",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.AD.TITLE",
+      "icon": "fa fa-photo fa-fw",
+      "state": "root.ad",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.CATEGORY.TITLE",
+      "icon": "fa fa-tags fa-fw",
+      "state": "root.category",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.NEWS.TITLE",
+      "icon": "fa fa-newspaper-o fa-fw",
+      "state": "root.news",
+      "params": {},
+      "children": []
+    },
+    {
+      "caption": "APP.MODULES.COMPANY.TITLE",
+      "icon": "fa fa-bank fa-fw",
+      "state": "root.company",
+      "params": {},
+      "children": []
+    }
+  ]
+}

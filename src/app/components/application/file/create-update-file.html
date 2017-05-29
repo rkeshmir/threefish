@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h3 class="modal-title">افزودن نسخه‌ی جدید</h3>
+</div>
+<div class="modal-body">
+
+    <form name="fileForm">
+        <div class="form-group">
+            <label class="control-label" for="description"
+                   ng-bind="'توضیحات'"></label>
+            <textarea ng-model="fmodal.file.description" class="form-control" id="description" name="description"
+                      placeholder="ویژگی‌های اضافه شده و ایرادات رفع شده در این نسخه ..." required></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="version"
+                   ng-bind="'نسخه'"></label>
+            <input ng-model="fmodal.file.version" class="form-control" id="version" name="version" placeholder="x.x.x"
+                   style="direction: ltr" required>
+        </div>
+    </form>
+    <div ng-hide="fmodal.method == 'PUT'">
+        <label for="file-input">
+            <span class="btn btn-default">
+                <i class="fa fa-file"></i>
+                <span ng-bind="appFile.name || 'انتخاب فایل'"></span>
+                &nbsp;
+                <span ng-bind="'(حجم: ' + (appFile.size/1000) + 'KB)'" ng-show="appFile.size"></span>
+            </span>
+        </label>
+        <input type="file" ngf-select ng-model="appFile" name="file" id="file-input"
+               accept="apk/*" ngf-max-size="1024000MB" required style="position: fixed; top: -100em"
+               ngf-model-invalid="errorFile">
+
+    </div>
+    <!--<div ng-if="fmodal.method == 'PUT'" class="alert alert-warning">
+        <i class="fa fa-warning"></i>
+        در صورتی که قصد بارگذاری فایلی جدیدی برای این نسخه دارید، یک فایل انتخاب کنید. در این صورت فایل پیشین پاک خواهد
+        شد. در صورتی که نیاز به تغییر فایل موجود این نسخه ندارید، این گزینه را خالی بگذارید.
+    </div>-->
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" data-ng-disabled="(!appFile && !fmodal.file.id) || fileForm.$invalid"
+            ng-click="fmodal.uploadFile(appFile)">
+        <i class="fa" ng-class="{'fa-upload' : appFile.name , 'fa-check': !appFile.name}"></i>
+        <span ng-bind="fmodal.method == 'POST'? '        ایجاد نسخه‌ی جدید' : 'ویرایش نسخه‌ی موجود'"></span>
+    </button>
+    <button class="btn btn-warning" type="button" ng-click="fmodal.cancel()" ng-bind="'انصراف'"></button>
+</div>

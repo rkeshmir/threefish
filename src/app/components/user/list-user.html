@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header">
+                <span data-translate="APP.MODULES.USER.TITLE"></span>
+                <a class="btn btn-primary pull-left" ui-sref="root.createUpdateUser({'method':'create'})">
+                    <i class="fa fa-user-plus"></i>&nbsp;
+                    <span ng-bind="('APP.ACTIONS.ADD'|translate) + ' ' + ('APP.MODULES.USER.USER'|translate)"></span>
+
+                </a>
+
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <table ng-table="vm.userTable" width="100%" class="table table-striped table-responsive table-hover"
+               template-pagination="app/directives/ng-table/pagination-tpl.html" id="userTable">
+            <tr ng-repeat="user in $data">
+                <td data-title="" ng-bind="((params.page()-1)*10+($index+1))|pNumber"></td>
+                <td data-title="'APP.MODULES.USER.USERNAME'|translate" ng-bind="user.username" class="text-center"></td>
+                <td data-title="'APP.MODULES.USER.NAME'|translate" ng-bind="user.name" class="text-center"></td>
+                <td data-title="'APP.MODULES.USER.FAMILY'|translate" ng-bind="user.family" class="text-center"></td>
+                <td data-title="'APP.MODULES.USER.ENABLED'|translate" class="text-center">
+                    <i class="fa fa-check-square-o" ng-if="user.enabled"></i>
+                    <i class="fa fa-ban" ng-if="!user.enabled"></i>
+                </td>
+                <td data-title="'APP.MODULES.USER.ROLES'|translate" class="text-center">
+                    <button class="btn btn-inline" ng-class="vm.getAuthorityClass(authority.authority)"
+                            ng-repeat="authority in user.authorities">
+                        <i class="fa fa-user-circle-o"></i>&nbsp;
+                        <span ng-bind="vm.getCaption(authority.authority)"></span>
+                    </button>
+                </td>
+                <td class="text-center">
+
+                    <i ng-attr-title="{{'APP.ACTIONS.DELETE'|translate}}" ng-click="vm.delete(user.username)"
+                       class="fa fa-user-times inline c-pointer danger m-r-1 m-l-1"></i>&nbsp;
+                    <a ui-sref="root.createUpdateUser({'method':'update', 'username':user.username})"
+                       target="_blank" class="inline a-non m-r-1 m-l-1">
+                        <i class="fa fa-user-o inline info" ng-attr-title="{{'APP.ACTIONS.EDIT'|translate}}"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

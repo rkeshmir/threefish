@@ -1,0 +1,177 @@
+<uib-accordion close-others="false" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <uib-accordion-group is-open="true">
+        <uib-accordion-heading>
+            <i class="fa fa-address-card-o"></i>&nbsp;
+            اطلاعات کاربری
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[0].isOpen, 'fa-chevron-left': !accordion.groups[0].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form role="form" name="userForm">
+                <div class="form-group" ng-class="{'has-error': userForm.username.$dirty && vm.user.username == null}">
+                    <label class="control-label" for="username"
+                           data-translate="APP.MODULES.USER.USERNAME"></label>
+                    <input ng-model="vm.user.username" class="form-control" id="username" name="username" type="text"
+                           ng-disabled="vm.method == 'update'">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'create'"
+                     ng-class="{'has-error': userForm.password.$dirty && vm.user.password == null}">
+                    <label class="control-label" for="password"
+                           data-translate="APP.MODULES.USER.PASSWORD"></label>
+                    <input ng-model="vm.user.password" class="form-control" id="password" name="password"
+                           type="password">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'create'"
+                     ng-class="{'has-error': userForm.passwordCheck.$dirty && vm.passwordCheck != vm.user.password}">
+                    <label class="control-label" for="password-check"
+                           data-translate="APP.MODULES.USER.PASSWORD_CHECK"></label>
+                    <input ng-model="vm.passwordCheck" class="form-control" id="password-check" type="password"
+                           name="passwordCheck">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'update'">
+                    <label class="control-label" for="enabled"
+                           data-translate="APP.MODULES.USER.ENABLED"></label>
+                    <input ng-model="vm.user.enabled" class="form-control" id="enabled" name="enabled" type="checkbox">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="name"
+                           data-translate="APP.MODULES.USER.NAME"></label>
+                    <input ng-model="vm.user.name" class="form-control" id="name" name="name" type="text">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="family"
+                           data-translate="APP.MODULES.USER.FAMILY"></label>
+                    <input ng-model="vm.user.family" class="form-control" id="family" name="family" type="text">
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': userForm.mobilePhone.$dirty && userForm.mobilePhone.$invalid}">
+                    <label class="control-label" for="mobile-phone"
+                           data-translate="APP.MODULES.USER.MOBILE_PHONE"></label>
+                    <input ng-model="vm.user.mobilePhone" class="form-control" id="mobile-phone" name="mobilePhone"
+                           type="text"
+                           required>
+                </div>
+                <div class="form-group" ng-class="{'has-error': userForm.email.$dirty && userForm.email.$invalid}">
+                    <label class="control-label" for="email"
+                           data-translate="APP.MODULES.USER.EMAIL"></label>
+                    <input ng-model="vm.user.email" class="form-control" id="email" name="email" type="email" required>
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="mobile-phone_two"
+                           data-translate="APP.MODULES.USER.MOBILE_PHONE_2"></label>
+                    <input ng-model="vm.user.mobilePhoneTwo" class="form-control" id="mobile-phone_two" type="text">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="mobile-phone-three"
+                           data-translate="APP.MODULES.USER.MOBILE_PHONE_3"></label>
+                    <input ng-model="vm.user.mobilePhoneThree" class="form-control" id="mobile-phone-three" type="text">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="phone"
+                           data-translate="APP.MODULES.USER.PHONE"></label>
+                    <input ng-model="vm.user.phone" class="form-control" id="phone" type="text">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="address"
+                           data-translate="APP.MODULES.USER.ADDRESS"></label>
+                    <input ng-model="vm.user.address" class="form-control" id="address" type="text">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="postal-code"
+                           data-translate="APP.MODULES.USER.POSTAL_CODE"></label>
+                    <input ng-model="vm.user.postalCode" class="form-control" id="postal-code" type="text">
+                </div>
+
+                <div class="form-group ">
+                    <label class="control-label" for="authorities"
+                           data-translate="APP.MODULES.USER.ROLES"></label>
+                    <ui-select multiple sortable="true" ng-model="vm.userAuthorities" theme="bootstrap"
+                               class="form-control"
+                               title="Choose a person" id="authorities">
+                        <ui-select-match placeholder="انتخاب نقش ...">{{$item.caption}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in vm.authorities | filter: $select.search">
+                            <div ng-bind-html="item.caption | highlight: $select.search"></div>
+                            <small ng-bind-html="item.authority | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" ng-click="vm.save()" class="btn btn-default"
+                            ng-disabled="userForm.$invalid"
+                            data-translate="APP.ACTIONS.SAVE"></button>
+                    <button type="button" ng-click="vm.reset()" class="btn btn-default"
+                            data-translate="APP.ACTIONS.RESET"></button>
+                </div>
+
+            </form>
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group ng-if="vm.method == 'update'">
+        <uib-accordion-heading>
+            <i class="fa fa-key"></i>&nbsp;
+            بازنشانی گذرواژه
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[1].isOpen, 'fa-chevron-left': !accordion.groups[1].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form role="form" name="passwordForm">
+                <div class="form-group"
+                     ng-class="{'has-error': passwordForm.password.$dirty && vm.user.password == null}">
+                    <label class="control-label" for="password"
+                           data-translate="APP.MODULES.USER.PASSWORD"></label>
+                    <input ng-model="vm.user.password" class="form-control" id="password" name="password"
+                           type="password">
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': passwordForm.passwordCheck.$dirty && vm.passwordCheck != vm.user.password}">
+                    <label class="control-label" for="password-check"
+                           data-translate="APP.MODULES.USER.PASSWORD_CHECK"></label>
+                    <input ng-model="vm.passwordCheck" class="form-control" id="password-check" type="password"
+                           name="passwordCheck">
+                </div>
+                <div class="form-group">
+                    <button type="button" ng-click="vm.resetPassword()" class="btn btn-default"
+                            data-translate="APP.ACTIONS.SAVE" ng-disabled="passwordForm.$invalid"></button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group ng-if="vm.method == 'update'">
+        <uib-accordion-heading>
+            <i class="fa fa-money"></i>&nbsp;
+مدیریت اعتبارات
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[2].isOpen, 'fa-chevron-left': !accordion.groups[2].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form role="form" name="creditForm">
+                <div class="form-group"
+                     >
+                    <label class="control-label" for="password"
+                           data-translate="APP.MODULES.USER.CURRENT_CREDIT"></label>
+                    <span ng-model="vm.user.password" class="form-control"
+                          ng-bind="(vm.user.credit|pCurrency|pNumber) + ' تومان '"></span>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': creditForm.addCredit.$dirty && vm.creditToAdd < 1000 }">
+                    <label class="control-label" for="add-credit"
+                           data-translate="APP.MODULES.USER.CREDIT_TO_ADD"></label>
+                    <input ng-model="vm.creditToAdd" class="form-control" id="add-credit" type="number"
+                           name="addCredit" placeholder="حداقل مبلغ افزایش ۱۰۰۰ تومان ...">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="credit-comment"
+                           data-translate="APP.MODULES.USER.CREDIT_COMMENT"></label>
+                    <input ng-model="vm.creditComment" class="form-control" id="credit-comment" type="text"
+                           name="creditComment" placeholder="توضیحات احتمالی ...">
+                </div>
+                <div class="form-group">
+                    <button type="button" ng-click="vm.addCredit()" class="btn btn-default"
+                            data-translate="APP.MODULES.USER.ADD_CREDIT" ng-disabled="creditForm.$invalid"></button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

@@ -1,0 +1,349 @@
+<div class="alert alert-warning" role="alert" ng-if="vm.simorgh && vm.method == 'create'">
+    <strong>توجه!</strong>
+    هنوز برنامه‌ی سیمرغ را در سامانه ایجاد نکرده‌اید.
+</div>
+<uib-accordion close-others="false" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <uib-accordion-group is-open="true" panel-class="panel-default">
+        <uib-accordion-heading>
+            <i class="fa fa-android"></i>&nbsp;
+            <span ng-bind="vm.name || 'اطلاعات اولیه برنامه'"></span>
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[0].isOpen, 'fa-chevron-left': !accordion.groups[0].isOpen}"></i>
+
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form role="form" name="applicationForm">
+                <div class="form-group"
+                     ng-class="{'has-error': applicationForm.applicationname.$dirty && vm.application.applicationname == null}">
+                    <label class="control-label" for="name"
+                           data-translate="APP.MODULES.APPLICATION.NAME"></label>
+                    <input ng-model="vm.application.name" class="form-control" id="name" name="name" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="app-package"
+                           data-translate="APP.MODULES.APPLICATION.APP_PACKAGE"></label>
+                    <input ng-model="vm.application.appPackage" class="form-control" id="app-package" name="appPackage"
+                           style="direction: ltr" type="text" ng-disabled="vm.simorgh">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'update'">
+                    <label class="control-label" for="last-version"
+                           data-translate="APP.MODULES.APPLICATION.LAST_VERSION"></label>
+                    <span ng-bind="vm.application.lastFileId ? vm.application.lastFile.version : 'نسخه‌ای موجود نیست'"
+                          class="form-control" id="last-version"
+                          style="direction: ltr">
+                </div>
+                <div class="form-group" ng-hide="vm.simorgh"
+                     ng-class="{'has-error': applicationForm.fee.$dirty && applicationForm.fee.$invalid}">
+                    <label class="control-label" for="fee"
+                           data-translate="APP.MODULES.APPLICATION.FEE"></label>
+                    <input ng-model="vm.application.fee" class="form-control" id="fee" name="fee" type="number"
+                           required>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error': applicationForm.mobilePhone.$dirty && applicationForm.mobilePhone.$invalid}">
+                    <label class="control-label" for="description"
+                           data-translate="APP.MODULES.APPLICATION.DESCRIPTION"></label>
+                    <textarea ng-model="vm.application.description" class="form-control" id="description"
+                              name="description"
+                              required></textarea>
+                </div>
+                <div class="form-group " ng-hide="vm.simorgh">
+                    <label class="control-label" for="category"
+                           data-translate="APP.MODULES.APPLICATION.CATEGORY"></label>
+                    <ui-select ng-model="vm.application.category" theme="selectize"
+                               id="category" title="انتخاب دسته‌بندی">
+                        <ui-select-match placeholder="یک دسته‌بندی را جستجو و انتخاب کنید ...">
+                            {{$select.selected.name}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="category in vm.categories | filter: $select.search">
+                            <div ng-bind-html="category.name | highlight: $select.search"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group" ng-hide="vm.simorgh">
+                    <label class="control-label" for="company"
+                           data-translate="APP.MODULES.APPLICATION.COMPANY"></label>
+                    <ui-select ng-model="vm.application.company" theme="selectize"
+                               id="company" title="انتخاب شرکت">
+                        <ui-select-match placeholder="یک شرکت را جستجو و انتخاب کنید ...">{{$select.selected.name}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="company in vm.companies | filter: $select.search">
+                            <div ng-bind-html="company.name | highlight: $select.search"></div>
+                            <small ng-bind-html="company.url | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+                <div class="form-group" ng-if="vm.method == 'update' && !vm.simorgh">
+                    <label class="control-label ng-scope" for="specificApp"
+                           data-translate="APP.MODULES.APPLICATION.SPECIFIC"></label>
+                    <input ng-model="vm.application.specificApp" class="form-control" id="specificApp"
+                           name="specificApp" type="checkbox">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'update' && !vm.simorgh">
+                    <label class="control-label" for="new-app"
+                           data-translate="APP.MODULES.APPLICATION.NEW"></label>
+                    <input ng-model="vm.application.newApp" class="form-control" id="new-app"
+                           name="specificApp" type="checkbox">
+                </div>
+                <div class="form-group" ng-if="vm.method == 'update' && !vm.simorgh">
+                    <label class="control-label" for="updated-app"
+                           data-translate="APP.MODULES.APPLICATION.RECENTLY_UPDATED"></label>
+                    <input ng-model="vm.application.recentlyUpdated" class="form-control" id="updated-app"
+                           name="updatedApp" type="checkbox">
+                </div>
+                <div class="form-group ">
+                    <label class="control-label" for="company"
+                           data-translate="APP.MODULES.APPLICATION.USER"></label>
+                    <ui-select ng-model="vm.application.user" theme="selectize"
+                               id="user" title="انتخاب کاربر">
+                        <ui-select-match placeholder="یک کاربر را جستجو و انتخاب کنید ...">
+                            {{$select.selected.completeName}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="user in vm.users | filter: $select.search">
+                            <div ng-bind-html="user.completeName | highlight: $select.search"></div>
+                            <small ng-bind-html="user.url | highlight: $select.search"></small>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" ng-click="vm.save()" class="btn btn-default"
+                            data-translate="APP.ACTIONS.SAVE"></button>
+                    <button type="button" ng-click="vm.reset()" class="btn btn-default"
+                            data-translate="APP.ACTIONS.RESET"></button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group panel-class="panel-info" data-ng-if="vm.method=='update'">
+        <uib-accordion-heading>
+            <i class="fa fa-photo"></i>&nbsp;
+            نشان برنامه
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[1].isOpen, 'fa-chevron-left': !accordion.groups[1].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form name="uploadLogo">
+                <div class="form-group">
+                    <img ng-show="vm.application.logo.id" class="pull-left"
+                         style="border: ridge 1px blanchedalmond;margin: 5px auto;"
+                         ng-src="{{vm.host}}{{vm.application.logo.url}}?data={{vm.tmpData}}"
+                         width="60">
+                    <label for="logo-input">
+                        <span class="btn btn-default">
+                            <i class="fa fa-file-picture-o"></i>
+                            <span ng-bind="vm.cropper.sourceImage.name || 'انتخاب تصویر'"></span>
+                            &nbsp;
+                            <span ng-bind="'(حجم: ' + (vm.cropper.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="vm.cropper.sourceImage.size"></span>
+                        </span>
+                    </label>
+                    <input name="logo" class="form-control" id="logo-input" type="file" img-cropper-fileread
+                           ng-model="vm.logoPic"
+                           image="vm.cropper.sourceImage" style="position: fixed; top: -100em"/>
+
+                </div>
+                <img ng-src="{{vm.cropper.sourceImage}}" id="source-image" style="position: absolute;top: -1000000px">
+                <div ng-show="vm.cropper.sourceImage">
+                    <canvas width="{{vm.cropperWidth}}" height="400" id="canvas" image-cropper
+                            image="vm.cropper.sourceImage"
+                            cropped-image="vm.cropper.croppedImage" crop-width="200" crop-height="200"
+                            keep-aspect="true" touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default ng-scope" ng-disabled="!vm.cropper.sourceImage"
+                            ng-click="vm.uploadLogo(vm.cropper.croppedImage)">
+                        بارگذاری نشان
+                        <i class="fa fa-upload upload-icon"></i>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group panel-class="panel-info" data-ng-if="vm.method=='update' && !vm.simorgh">
+        <uib-accordion-heading>
+            <i class="fa fa-photo"></i>&nbsp;
+            بنر برنامه
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[2].isOpen, 'fa-chevron-left': !accordion.groups[2].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form name="uploadBanner">
+
+                <div class="form-group">
+                    <img ng-show="vm.application.banner.id" class="pull-left"
+                         style="border: ridge 1px blanchedalmond;margin: 5px auto;"
+                         ng-src="{{vm.host}}{{vm.application.banner.url}}?data={{vm.tmpData}}"
+                         width="80">
+                    <label for="banner-input">
+                        <span class="btn btn-default">
+                            <i class="fa fa-file-picture-o"></i>
+                            <span ng-bind="vm.cropperBanner.sourceImage.name || 'انتخاب تصویر'"></span>
+                            &nbsp;
+                            <span ng-bind="'(حجم: ' + (vm.cropperBanner.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="vm.cropperBanner.sourceImage.size"></span>
+                        </span>
+                    </label>
+                    <input name="banner" class="form-control" id="banner-input" type="file" img-cropper-fileread
+                           image="vm.cropperBanner.sourceImage" style="position: fixed; top: -100em"/>
+
+                </div>
+                <div ng-show="vm.cropperBanner.sourceImage">
+                    <canvas width="{{vm.cropperWidth}}" id="canvas-banner" image-cropper
+                            image="vm.cropperBanner.sourceImage" result-image-format="image/jpeg"
+                            cropped-image="vm.cropperBanner.croppedImage"
+                            crop-width="(vm.bannerBounds.right - vm.bannerBounds.left)"
+                            crop-height="(vm.bannerBounds.top - vm.bannerBounds.bottom)"
+                            keep-aspect="false" touch-radius="30" crop-area-bounds="vm.bannerBounds"></canvas>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default ng-scope" ng-disabled="!vm.cropperBanner.sourceImage"
+                            ng-click="vm.uploadBanner(vm.cropperBanner.croppedImage)">
+                        بارگذاری بنر
+                        <i class="fa fa-upload upload-icon"></i>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group panel-class="panel-info" data-ng-if="vm.method=='update' && !vm.simorgh">
+        <uib-accordion-heading>
+            <i class="fa fa-picture-o"></i>&nbsp;
+            تصاویر برنامه
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[3].isOpen, 'fa-chevron-left': !accordion.groups[3].isOpen}"></i>
+
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        برچسب
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="pic in vm.application.pictures">
+                    <td>
+                        <img ng-src="{{vm.host}}{{pic.url}}" width="70">
+                    </td>
+                    <td ng-bind="pic.label">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="vm.deletePic(pic.id)">
+                            <i class="fa fa-trash"></i>&nbsp;
+                            حذف
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pic-input" style="display: block">
+                            <span class="btn btn-default">
+                                <i class="fa fa-file-picture-o"></i>
+                                <span ng-bind="vm.picCropper.sourceImage.name || 'انتخاب تصویر'"></span>&nbsp;
+                                <span ng-bind="'(حجم: ' + (vm.picCropper.sourceImage.size/1000) + 'KB)'"
+                                      ng-show="vm.picCropper.sourceImage.size"></span>
+                            </span>
+                        </label>
+                        <input name="picture" class="form-control" id="pic-input" type="file" img-cropper-fileread
+                               image="vm.picCropper.sourceImage" style="position: fixed; top: -100em"/>
+                    </td>
+                    <td>
+                        <input type="text" name="label" id="label" ng-model="vm.picLabel"
+                               placeholder="توضیحات مربوط به این تصویر (در صورت نیاز) ..." class="form-control">
+                    </td>
+                    <td>
+                        <button class="btn btn-default ng-scope" ng-disabled="!vm.picCropper.sourceImage"
+                                ng-click="vm.uploadPic(vm.picCropper.croppedImage)">
+                            افزودن تصویر تصویر
+                            <i class="fa fa-upload upload-icon"></i>
+                        </button>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div ng-show="vm.picCropper.sourceImage">
+                <canvas width="500" height="300" id="canvas-pic" image-cropper image="vm.picCropper.sourceImage"
+                        class="center-block" result-image-format="image/jpeg"
+                        cropped-image="vm.picCropper.croppedImage" crop-width="(vm.bounds.right - vm.bounds.left)"
+                        crop-height="(vm.bounds.top - vm.bounds.bottom)"
+                        keep-aspect="false" touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+            </div>
+
+        </div>
+    </uib-accordion-group>
+    <uib-accordion-group panel-class="panel-primary" data-ng-if="vm.method=='update'">
+        <uib-accordion-heading>
+            <i class="fa fa-files-o"></i>&nbsp;
+            نسخه‌های برنامه
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[4].isOpen, 'fa-chevron-left': !accordion.groups[4].isOpen}"></i>
+
+        </uib-accordion-heading>
+        <div id="versions" class="panel-body">
+            <div class="col-lg-12">
+                <button ng-click="vm.addFileModal()" class="btn btn-primary pull-left">
+                    <i class="fa fa-plus-square-o"></i>
+                    افزودن نسخه‌ی جدید
+                </button>
+            </div>
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>
+                        نسخه
+                    </th>
+                    <th>
+                        توضیحات
+                    </th>
+                    <th>
+                        تاریخ
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="file in vm.application.files">
+                    <td>
+                        <a ng-click="vm.addFileModal(file)" ng-bind="file.version" title="'ویرایش این نسخه'"></a>
+                    </td>
+                    <td ng-bind="file.description">
+                    </td>
+                    <td ng-bind="file.registrationDate|jDate|pNumber">
+                    </td>
+                    <td>
+                        <a target="_blank" class="btn btn-primary"
+                           ng-href="{{vm.host}}{{file.url}}">
+                            <i class="fa fa-download"></i>
+                        </a>
+                    </td>
+                    <th>
+                        <button class="btn btn-danger" ng-click="vm.deleteFile(file.id)">
+                            <i class="fa fa-trash-o"></i>
+                        </button>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </uib-accordion-group>
+
+
+</uib-accordion>

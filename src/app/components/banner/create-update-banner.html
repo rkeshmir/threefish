@@ -1,0 +1,71 @@
+<uib-accordion close-others="false" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <uib-accordion-group panel-class="panel-info" is-open="true">
+        <uib-accordion-heading>
+            <i class="fa fa-tag"></i>&nbsp;
+            <span ng-bind="vm.method == 'create' ? 'افزودن بنر' : 'ویرایش بنر'"></span>
+            <i class="pull-left fa"
+               ng-class="{'fa-chevron-down': accordion.groups[0].isOpen, 'fa-chevron-left': !accordion.groups[0].isOpen}"></i>
+        </uib-accordion-heading>
+        <div class="panel-body">
+            <form name="bannerForm">
+                <div class="form-group">
+                    <label for="label">
+                        عنوان بنر
+                    </label>
+                    <textarea class="form-control" id="label" name="label" ng-disabled="vm.loading"
+                              ng-model="vm.banner.label"></textarea>
+                </div>
+                <div class="form-group">
+                    <img ng-if="vm.banner.id" class="pull-left"
+                         style="border: ridge 1px blanchedalmond;margin: 5px auto;"
+                         ng-src="{{vm.host}}{{vm.banner.url + '?data=' + vm.date}}"
+                         width="60">
+                    <label for="picture-input">
+                        <span class="btn btn-default">
+                            <i class="fa fa-file-picture-o"></i>&nbsp;
+                            <span ng-bind="vm.cropper.sourceImage.name || 'انتخاب تصویر'"></span>
+                            &nbsp;
+                            <span ng-bind="'(حجم: ' + (vm.cropper.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="vm.cropper.sourceImage.size"></span>
+                        </span>
+                    </label>
+                    <input ng-disabled="vm.loading" name="picture" class="form-control" id="picture-input" type="file"
+                           img-cropper-fileread
+                           image="vm.cropper.sourceImage" style="position: fixed; top: -100em"/>
+                    <div ng-show="vm.cropper.sourceImage">
+                        <canvas width="{{vm.cropperWidth}}" id="canvas" image-cropper image="vm.cropper.sourceImage"
+                                cropped-image="vm.cropper.croppedImage"
+                                crop-width="(vm.bounds.right - vm.bounds.left)"
+                                crop-height="(vm.bounds.top - vm.bounds.bottom)"
+                                keep-aspect="false" touch-radius="30" crop-area-bounds="vm.bounds"></canvas>
+                    </div>
+                </div>
+
+                <div class="alert alert-info" ng-show="vm.cropper.sourceImage">
+                    اندازه مناسب:
+                    880 * 300
+                </div>
+                <div class="alert" ng-show="vm.cropper.sourceImage"
+                     ng-class="{
+                     'alert-danger':    vm.getRatioDiff() >= 0.1,
+                     'alert-success':   vm.getRatioDiff() < 0.01,
+                     'alert-info':      vm.getRatioDiff() < 0.1
+                     }">
+                    اندازه کنونی:
+                    <span ng-bind="(vm.bounds.right - vm.bounds.left)"></span> * <span
+                        ng-bind="(vm.bounds.top - vm.bounds.bottom)"></span>
+                    (<span ng-bind="' اختلاف نسبت: ' + (vm.getRatioDiff()|number:2)"></span>)
+                </div>
+
+
+                <div class="form-group">
+                    <button class="btn btn-default" ng-click="vm.save()"
+                            ng-disabled="vm.loading || bannerForm.$invalid || (bannerForm.$pristine && !vm.cropper) || (!vm.cropper && vm.method == 'create')">
+                        <i class="fa fa-check"></i>
+                        <span ng-bind="vm.method == 'update' ? 'ویرایش' : 'ایجاد بنر'"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </uib-accordion-group>
+</uib-accordion>

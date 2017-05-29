@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header">
+                <span data-translate="APP.MODULES.AD.TITLE"></span>
+                <a class="btn btn-primary pull-left" ui-sref="root.createUpdateAd({'method':'create'})">
+                    <i class="fa fa-plus-square"></i>
+                    <span ng-bind="('APP.ACTIONS.ADD'|translate) + ' ' + ('APP.MODULES.AD.AD'|translate)"></span>
+
+                </a>
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <table ng-table="vm.adTable" width="100%" class="table table-striped table-responsive table-hover"
+               template-pagination="app/directives/ng-table/pagination-tpl.html"
+               id="adTable">
+            <tr ng-repeat="ad in $data">
+                <td title="" ng-bind="((params.page()-1)*10+($index + 1))|pNumber"></td>
+                <td class="text-center" data-title="'APP.MODULES.AD.PICTURE'|translate">
+                    <img ng-src="{{vm.host}}{{ad.picture.url}}"
+                         width="100">
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.AD.URL'|translate">
+                    <a ng-href="{{ad.url}}" target="_blank"> {{ad.url}}</a>
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.AD.SHOW_FROM'|translate"
+                    ng-bind="ad.fromDate|jDate|pNumber" class="text-center">
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.AD.SHOW_TO'|translate"
+                    ng-bind="ad.toDate|jDate|pNumber" class="text-center">
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.AD.USER'|translate" class="text-center">
+                    <a ui-sref="root.createUpdateUser({'method': 'update', 'username': ad.user.username})"
+                       target="_blank" ng-bind="ad.user.completeName"></a>
+                </td>
+                <td class="text-center" data-title="">
+                    <i ng-attr-title="{{'APP.ACTIONS.DELETE'|translate}}"
+                       class="fa fa-trash inline c-pointer danger m-r-1 m-l-1"
+                       ng-click="vm.delete(ad.id)"></i>
+
+                    <a ng-attr-title="{{'APP.ACTIONS.EDIT'|translate}}" target="_blank"
+                       class="inline a-non m-r-1 m-l-1"
+                       ui-sref="root.createUpdateAd({'method':'update', 'id': ad.id})">
+                        <i class="fa fa-edit inline info"></i>
+
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

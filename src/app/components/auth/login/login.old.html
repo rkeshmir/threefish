@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-body">
+                    <form role="form" name="loginForm" ng-submit="vm.login()"
+                          novalidate>
+
+                        <fieldset>
+                            <div class="form-group" data-ng-class="{'has-error':
+                            loginForm.username.$invalid&&!loginForm.username.$pristine }">
+                                <label data-translate="APP.MODULES.AUTH.SHARE.USERNAME"></label>
+                                <input class="form-control"
+                                       placeholder="{{'APP.MODULES.AUTH.SHARE.USERNAME'|translate}}"
+                                       name="username"
+                                       type="text"
+                                       data-ng-model="vm.username"
+                                       autofocus required>
+                            </div>
+                            <div class="form-group" data-ng-class="{'has-error':
+                            loginForm.password.$invalid&&!loginForm.password.$pristine }">
+                                <label data-translate="APP.MODULES.AUTH.SHARE.PASSWORD"></label>
+                                <input class="form-control"
+                                       placeholder="{{'APP.MODULES.AUTH.SHARE.PASSWORD'|translate}}"
+                                       name="password"
+                                       type="password"
+                                       data-ng-model="vm.password"
+                                       required>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button class="btn btn-info btn-block"
+                                    type="submit"
+                                    data-ng-disabled="loginForm.$invalid">
+                                <span data-translate="APP.MODULES.AUTH.LOGIN.TITLE"></span>
+                            </button>
+                            <!--<a class="btn btn-info btn-block"
+                               data-ui-sref="root.home">
+                                <span data-translate="APP.MODULES.AUTH.LOGIN.TITLE"></span>
+                            </a>-->
+                            <a class="btn btn-link" data-ui-sref="register">
+                                <span data-translate="APP.MODULES.AUTH.REGISTER.TITLE"></span>
+                            </a>
+                            <a class="btn btn-link" data-ui-sref="forgetPass">
+                                <span data-translate="APP.MODULES.AUTH.FORGET_PASS.TITLE"></span>
+                            </a>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <img class="img-responsive"
+             src="../../../../assets/images/logo.png">
+    </div>
+</div>

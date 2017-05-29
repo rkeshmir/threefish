@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header">
+                <span data-translate="APP.MODULES.COMPANY.TITLE"></span>
+                <a class="btn btn-primary pull-left" ui-sref="root.createUpdateCompany({'method':'create'})">
+                    <i class="fa fa-plus-square"></i>
+                    <span ng-bind="('APP.ACTIONS.ADD'|translate) + ' ' + ('APP.MODULES.COMPANY.COMPANY'|translate)"></span>
+
+                </a>
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <table ng-table="vm.companyTable" width="100%" class="table table-striped table-responsive table-hover"
+               template-pagination="app/directives/ng-table/pagination-tpl.html"
+               id="companyTable">
+            <tr ng-repeat="company in $data">
+                <td class="text-center" title="" ng-bind="((params.page()-1)*10+($index + 1))|pNumber"></td>
+                <td class="text-center" data-title="'APP.MODULES.COMPANY.NAME'|translate" ng-bind="company.name">
+                </td>
+                <td class="text-center" data-title="'APP.MODULES.COMPANY.URL'|translate">
+                    <a href="{{company.url}}" target="_blank" ng-bind="company.url"></a>
+                </td>
+                <td class="text-center">
+                    <i ng-attr-title="{{'APP.ACTIONS.DELETE'|translate}}"
+                       class="fa fa-trash inline c-pointer danger m-r-1 m-l-1"
+                       ng-click="vm.delete(company.id)"></i>
+
+                    <a ng-attr-title="{{'APP.ACTIONS.EDIT'|translate}}" target="_blank"
+                       class="inline a-non m-r-1 m-l-1"
+                       ui-sref="root.createUpdateCompany({'method':'update', 'id':company.id})">
+                        <i class="fa fa-edit inline info"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

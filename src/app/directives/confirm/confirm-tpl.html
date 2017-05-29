@@ -1,0 +1,22 @@
+<div class="modal-header" ng-if="data.title">
+    <h5 class="modal-title"
+        data-ng-bind="data.title">
+    </h5>
+</div>
+<div class="modal-body text-center">
+    <span class="text-center "
+          data-ng-bind="data.text|pNumber">
+    </span>
+    <br>
+    <br>
+    <div class="text-center">
+        <button class="btn btn-sm btn-info"
+                ng-click="ok()"
+                data-ng-bind="data.ok">
+        </button>
+        <button class="btn btn-sm btn-danger"
+                ng-click="cancel()"
+                data-ng-bind="data.cancel">
+        </button>
+    </div>
+</div>

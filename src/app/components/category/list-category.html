@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header">
+                <span data-translate="APP.MODULES.CATEGORY.TITLE"></span>
+                <a class="btn btn-primary pull-left" ui-sref="root.createUpdateCategory({'method':'create'})">
+                    <i class="fa fa-plus-square"></i>
+                    <span ng-bind="('APP.ACTIONS.ADD'|translate) + ' ' + ('APP.MODULES.CATEGORY.CATEGORY'|translate)"></span>
+
+                </a>
+            </h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <table ng-table="vm.categoryTable" width="100%"
+               template-pagination="app/directives/ng-table/pagination-tpl.html"
+               class="table table-striped table-responsive table-hover"
+               id="categoryTable">
+            <tr ng-repeat="category in $data">
+                <td title="" ng-bind="((params.page()-1)*10+($index + 1))|pNumber"></td>
+                <td data-title="'APP.MODULES.CATEGORY.NAME'|translate"
+                    ng-attr-title="{{'APP.MODULES.CATEGORY.NAME'|translate}}" ng-bind="category.name"
+                    class="text-center">
+                </td>
+                <td data-title="'APP.MODULES.CATEGORY.PICTURE'|translate">
+                    <img ng-show="category.picture.id" ng-src="{{vm.host}}{{category.picture.url}}"
+                         width="40">
+                </td>
+                <td title="" class="text-center">
+
+                    <i ng-attr-title="{{'APP.ACTIONS.DELETE'|translate}}"
+                       class="fa fa-trash inline c-pointer danger m-r-1 m-l-1"
+                       ng-click="vm.delete(category.id)"></i>
+
+
+                    <a ng-attr-title="{{'APP.ACTIONS.EDIT'|translate}}" target="_blank"
+                       class="inline a-non m-r-1 m-l-1"
+                       ui-sref="root.createUpdateCategory({'method':'update', 'id':category.id})">
+                        <i class="fa fa-edit inline info"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

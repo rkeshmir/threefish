@@ -1,0 +1,8 @@
+<span class="btn btn-default fileinput-button">
+   <i class="fa fa-file-o"></i>
+   <span data-ng-bind="(file.name || label)| limitTo:15"></span>
+    <!-- The file input field used as target for the file upload widget -->
+   <input class="fileupload" name="file" type="file" accept="{{accept}}"
+          data-file-model="file">
+   <i class="fa fa-spinner fa-spin" data-ng-if="uploading"></i>
+</span>

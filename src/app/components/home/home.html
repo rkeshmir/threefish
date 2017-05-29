@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="page-header"
+                data-translate="APP.MODULES.HOME.TITLE"></h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <samat-stats data-goto="root.user"
+                     data-color="primary"
+                     data-comments="APP.MODULES.USER.COUNT"
+                     data-title="APP.SHARE.VIEW"
+                     data-number="{{vm.dashboard.users}}"
+                     data-icon="users">
+        </samat-stats>
+        <samat-stats data-goto="root.application"
+                     data-color="green"
+                     data-comments="APP.MODULES.APPLICATION.COUNT"
+                     data-title="APP.SHARE.VIEW"
+                     data-number="{{vm.dashboard.applications}}"
+                     data-icon="android">
+        </samat-stats>
+        <samat-stats data-goto="root.category"
+                     data-color="yellow"
+                     data-comments="APP.MODULES.CATEGORY.COUNT"
+                     data-title="APP.SHARE.VIEW"
+                     data-number="{{vm.dashboard.categories}}"
+                     data-icon="tags">
+        </samat-stats>
+        <samat-stats data-goto="root.company"
+                     data-color="red"
+                     data-comments="APP.MODULES.COMPANY.COUNT"
+                     data-title="APP.SHARE.VIEW"
+                     data-number="{{vm.dashboard.companies}}"
+                     data-icon="bank">
+        </samat-stats>
+    </div>
+</div>
