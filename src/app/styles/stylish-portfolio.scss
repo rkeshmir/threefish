@@ -732,3 +732,12 @@ footer .list-inline img:hover {
 .ui-view {
     height: 100%;
 }
+
+.service-icon {
+    width: 100%;
+    display: block;
+    z-index: 1000;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}

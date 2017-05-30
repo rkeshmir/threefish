@@ -175,13 +175,15 @@
                 <hr class="small">
                 <div class="row">
                     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
-                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" ng-repeat="service in vm.services">
                         <div class="service-item">
-                            <span class="fa-stack fa-4x" ng-mouseenter="vm.mouseIn()" ng-mouseleave="vm.mouseOut()">
+                            <span class="fa-stack fa-4x" ng-mouseenter="vm.mouseIn(service)" ng-mouseleave="vm.mouseOut(service)">
                                 <!--<i class="fa fa-circle fa-stack-2x"></i>-->
                                 <!--<i class="fa fa-star fa-stack-1x text-primary" ng-mouseenter="vm.mouseIn()"></i>-->
-                                <img style="width: 100%;display: block;z-index: 1000;" src="../../assets/images/icon/star-Start.jpg" ng-show="vm.icon['star'] === 1"></img>
-                                <img style="width: 100%;display: block;z-index: 1000;" src="../../assets/images/icon/star-End.jpg" ng-show="vm.icon['star'] === 2"></img>
+                                <img class="service-icon" ng-src="{{service.logoOut}}"     ng-show="service.icon === 0"></img>
+                                <img ng-attr-id="{{'icon-' + service.id + '-1'}}" class="service-icon" ng-show="service.icon === 1"></img>
+                                <img class="service-icon" ng-src="{{service.logoIn}}"       ng-show="service.icon === 2"></img>
+                                <img ng-attr-id="{{'icon-' + service.id + '-2'}}" class="service-icon"    ng-show="service.icon === 3"></img>
                             </span>
                             <h4>
                                 <strong>
@@ -191,11 +193,11 @@
                             <p></p>
                             <a href="#services" class="btn btn-light" data-toggle="modal"
                                data-target="#brandsModal">
-                                <i class="fa fa-hand-pointer-o"></i>
+                                 بیشتر ...
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <!--<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                         <div class="service-item">
                                 <span class="fa-stack fa-4x">
                                 <i class="fa fa-circle fa-stack-2x"></i>
@@ -210,7 +212,7 @@
                             </p>
                             <a href="#services" data-toggle="modal" data-target="#socialModal"
                                class="btn btn-light">
-                                توضیحات بیشتر ...
+
                             </a>
                         </div>
                     </div>
@@ -268,7 +270,7 @@
                                 مستند سازی
                             </a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <!-- /.row (nested) -->
             </div>
