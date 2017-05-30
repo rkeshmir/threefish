@@ -178,16 +178,15 @@
                     <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" ng-repeat="service in vm.services">
                         <div class="service-item">
                             <span class="fa-stack fa-4x" ng-mouseenter="vm.mouseIn(service)" ng-mouseleave="vm.mouseOut(service)">
-                                <!--<i class="fa fa-circle fa-stack-2x"></i>-->
-                                <!--<i class="fa fa-star fa-stack-1x text-primary" ng-mouseenter="vm.mouseIn()"></i>-->
+                                <i class="fa fa-circle fa-stack-2x" ng-if="service.icon === 4"></i>
+                                <i class="fa {{service.awesomeIcon}} fa-stack-1x text-primary" ng-if="service.icon === 4"></i>
                                 <img class="service-icon" ng-src="{{service.logoOut}}"     ng-show="service.icon === 0"></img>
                                 <img ng-attr-id="{{'icon-' + service.id + '-1'}}" class="service-icon" ng-show="service.icon === 1"></img>
                                 <img class="service-icon" ng-src="{{service.logoIn}}"       ng-show="service.icon === 2"></img>
                                 <img ng-attr-id="{{'icon-' + service.id + '-2'}}" class="service-icon"    ng-show="service.icon === 3"></img>
                             </span>
                             <h4>
-                                <strong>
-                                    برندسازی
+                                <strong ng-bind="service.name">
                                 </strong>
                             </h4>
                             <p></p>
@@ -224,7 +223,7 @@
                             </span>
                             <h4>
                                 <strong>
-                                    برنامه‌‌سازی
+
                                 </strong>
                             </h4>
                             <p>
@@ -243,7 +242,7 @@
                             </span>
                             <h4>
                                 <strong>
-                                    تیزر تبلیغاتی
+
                                 </strong>
                             </h4>
                             <p>
@@ -267,7 +266,7 @@
                             <p></p>
                             <a href="#services" data-toggle="modal" data-target="#documentaryModal"
                                class="btn btn-light">
-                                مستند سازی
+
                             </a>
                         </div>
                     </div>-->

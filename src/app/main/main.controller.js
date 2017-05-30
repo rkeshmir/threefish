@@ -22,11 +22,34 @@
 				logoIn: "../../assets/images/icon/star-End.jpg",
 				logoAnimateOut: "../../assets/images/icon/star-revers.gif",
 				id: 1
-			}
+			},
+            {
+                name: "محتوای شبکه‌ی اجتماعی",
+                logoOut: "../../assets/images/icon/social-Start.jpg",
+                logoAnimateIn: "../../assets/images/icon/Network.gif",
+                logoIn: "../../assets/images/icon/social-End.jpg",
+                logoAnimateOut: "../../assets/images/icon/Network-revers.gif",
+                id: 2
+            },
+            {
+                name: "برنامه‌‌سازی",
+                awesomeIcon: "fa-product-hunt",
+                id: 3
+            },
+			{
+                name: "تیزر تبلیغاتی",
+                awesomeIcon: "fa-gears",
+                id: 4
+            },
+			{
+                name: "مستند سازی",
+                awesomeIcon: "fa-compass",
+                id: 5
+            }
 		];
 
         vm.services.forEach(function (service) {
-            service.icon = 0;
+            service.icon = service.awesomeIcon ? 4 : 0;
 		});
 
 		activate();
