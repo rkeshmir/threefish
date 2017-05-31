@@ -70,6 +70,8 @@
 		var iconTimeOut = 900;
 
 		function mouseIn(service) {
+		    if( service.icon === 4)
+		        return;
 			console.log('mouse in', service.id);
 			var src = service.logoAnimateIn;
             var $img = $('#icon-' + service.id + '-1');
@@ -85,6 +87,8 @@
 		}
 
 		function mouseOut(service) {
+            if( service.icon === 4)
+                return;
 			console.log('mouse out', service.id);
             var src = service.logoAnimateOut;
             var $img = $('#icon-' + service.id + '-2');
