@@ -101,5 +101,12 @@
                 service.icon = 0;
             }, iconTimeOut);
 		}
+
+		function scroll(elementId) {
+            var offset = 30; //pixels; adjust for floating menu, context etc
+            var duration = 2000; //milliseconds
+            var someElement = angular.element(document.getElementById('elementId'));
+            $document.scrollToElement(someElement, offset, duration);
+        }
 	}
 })();

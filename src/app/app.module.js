@@ -19,6 +19,7 @@
             'ngImgCrop',
 			'angular-img-cropper',
             'ngMaterial',
+			'duScroll',
 			//our modules
 			'auth'
 		]);
