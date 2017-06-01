@@ -13,7 +13,12 @@
         });
 
         $rootScope.mdMedia = $mdMedia;
-        $rootScope.showNav = $mdMedia('gt-sm');
+        $rootScope.showNav = false;
+        $rootScope.hideNav = function () {
+            if($rootScope.showNav){
+                $rootScope.showNav = false;
+            }
+        };
 		//set confirm default
 		$confirmModalDefaults.templateUrl = 'app/directives/confirm/confirm-tpl.html';
 		$confirmModalDefaults.defaultLabels.title = '';
