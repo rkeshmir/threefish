@@ -142,7 +142,7 @@
                                 </strong>
                             </h4>
                             <p></p>
-                            <a class="btn btn-light" ng-click="vm.openServiceModal()">
+                            <a class="btn btn-light" ng-click="vm.openServiceModal($index)">
                                  بیشتر ...
                             </a>
                         </div>
@@ -982,42 +982,21 @@
                     وبلاگ
                 </h2>
                 <h3 class="section-subheading">
-                    یادداشت‌های و مطالب سه‌ماهی
+                    یادداشت‌ها و مطالب سه‌ماهی
                 </h3>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4 col-xs-12 portfolio-item">
+            <div class="col-md-4 col-xs-12 portfolio-item" ng-repeat="blog in vm.blogs">
                 <a href="#">
-                    <img src="img/blog/700-400-2.jpg" alt="">
+                    <img class="img-responsive img-blog" ng-src="{{blog.image}}" alt="">
                 </a>
                 <h3>
-                    <a href="#">همکاری با اقامت۲۴</a>
+                    <a href="#" ng-bind="blog.title"></a>
                 </h3>
                 <p>
-                    این مرکز با هدف تحقق شعار "رزرو مکان اقامتی قبل از سفر" که از دغدغه های سازمان میراث فرهنگی و گردشگری بوده است، طراحی و راه اندازی شد.
-                    <a href="#"> ادامه‌ی مطلب ... </a>
-                </p>
-            </div>
-            <div class="col-md-4 col-xs-12 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="img/~text.png" alt="">
-                </a>
-                <h3>
-                    <a href="#">عنوان پست</a>
-                </h3>
-                <p>خلاصه‌ی پست در دو یا نهایتاً سه خط به طوری که زیاد طولانی نباشد. می‌توان در انتهای مطلب لینک به ادامه‌ی مطلب قرار داد یا با کلیک بر روی تصویر به ادامه‌ی مطلب رفت</p>
-            </div>
-            <div class="col-md-4 col-xs-12 portfolio-item">
-                <a href="#">
-                    <img class="img-responsive" src="img/blog/460072-love-ballons.jpg" alt="">
-                </a>
-                <h3>
-                    <a href="#">عنوان پست</a>
-                </h3>
-                <p>
-                    خلاصه‌ی پست در دو یا نهایتاً سه خط به طوری که زیاد طولانی نباشد. می‌توان در انتهای مطلب لینک به ادامه‌ی مطلب قرار داد یا با کلیک بر روی تصویر به ادامه‌ی مطلب رفت
+                    {{blog.lead}}
                     <a href="#"> ادامه‌ی مطلب ... </a>
                 </p>
             </div>
@@ -1028,10 +1007,24 @@
 
 <!-- Map -->
 <section id="contact" class="map">
-    <a target="_blank" class="map-link"
+    <a target="_blank" class="map-link" ng-if="false"
        href="https://www.google.com/maps/place/35%C2%B045'13.8%22N+51%C2%B021'57.3%22E/@35.7534498,51.3655143,17z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.753846!4d51.365922">
         <span class="map-container well"></span>
     </a>
+    <div class="col-sm-6 sm-hidden">
+        <ng-map id="map" center="[35.753846, 51.365879]" default-style="false">
+            <marker position="35.753846, 51.365879" title="سه‌ماهی"
+                    optimized="treu"
+                    icon="{
+                        url:'../assets/marker.png',
+                        scaledSize:[50,50]
+                      }"
+            >
+
+            </marker>
+        </ng-map>
+    </div>
+
     <div class="col-sm-6" style="padding: 20px; background-color: #e8e8e8; height: 100%">
         <form action="#" class="form-horizontal">
             <legend>همین امروز با ما تماس بگیرید!</legend>
@@ -1069,7 +1062,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-md-8 pull-right">
-                    <button type="submit" class="btn btn-primary">ارسال &nbsp;<span
+                    <button type="submit" class="btn btn-default pull-left">ارسال &nbsp;<span
                             class="fa fa-send"></span></button>
                 </div>
             </div>
@@ -1173,23 +1166,24 @@
                 </div>
             </div>-->
             <div class="col-md-3 col-sm-6 paddingtop-bottom pull-right">
-                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline"
+                <div class="fb-page" data-href="https://www.facebook.com/facebook"
+                     data-tabs="timeline"
                      data-height="300" data-small-header="false" style="margin-bottom:15px;"
                      data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <div class="fb-xfbml-parse-ignore">
                         <blockquote class="social" cite="http://www.aparat.com/threefish">
-                            <a href="http://www.aparat.com/threefish">
-                                <img class="social-logo" width="19" src="img/logos/aparat_logo_alt_blue.png">
+                            <a href="http://www.aparat.com/threefish" target="_blank">
+                                <img class="social-logo" width="19" src="img/logos/aparat_logo_alt.png">
                                 <span class="social-title">آپارات</span>
                             </a>
                         </blockquote>
-                        <blockquote class="social" cite="http://www.telegram.me/threefish">
+                        <blockquote class="social" cite="http://www.telegram.me/threefish" target="_blank">
                             <a href="http://www.telegram.me/threefish">
                                 <i class="fa fa-telegram social-logo"></i>
                                 <span class="social-title">تلگرام</span>
                             </a>
                         </blockquote>
-                        <blockquote class="social" cite="https://www.instagram.com/3fishgroup/">
+                        <blockquote class="social" cite="https://www.instagram.com/3fishgroup/" target="_blank">
                             <a href="http://www.aparat.com/threefish">
                                 <i class="fa fa-instagram social-logo"></i>
                                 <span class="social-title">اینستاگرام</span>

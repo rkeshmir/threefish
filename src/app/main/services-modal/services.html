@@ -5,14 +5,29 @@
     <h3 class="modal-title">خدمات سه ماهی</h3>
 </div>
 <div class="modal-body">
-    <uib-tabset active="active">
-        <uib-tab ng-repeat="service in ServicesVm.services" index="$index" select="alertMe()">
+    <uib-tabset active="ServicesVm.active">
+        <uib-tab ng-repeat="service in ServicesVm.services" index="$index">
             <uib-tab-heading>
-                <i ng-if="service.awesomeIcon" class="fa {{service.awesomeIcon}}"></i>
+                <i ng-if="service.awesomeIcon" style="font-size: 10.35vw" class="fa {{service.awesomeIcon}}"></i>
                 <img ng-if="service.logoOut" ng-src="{{service.logoOut}}" class="img-responsive"
-                     style="border-radius: 50%;width: 20px"></img>
+                     style="border-radius: 50%;width: 100%">
             </uib-tab-heading>
-            <span ng-bind="service.name"></span>
+            <div class="row" style="margin: 0">
+                <div class="col-md-7 pull-right">
+                    <a>
+                        <img ng-src="{{service.picture}}" alt="" style="margin: 2%" class="img-responsive m-2">
+                    </a>
+                </div>
+                <div class="col-md-5" style="padding: 1%">
+                    <h3 ng-bind="service.name"></h3>
+                    <h4 ng-bind="service.lead"></h4>
+                    <p ng-bind="service.description"></p>
+                    <a class="btn btn-default">
+                        اطلاعات بیشتر
+                        <i class="fa fa-caret-left"></i>
+                    </a>
+                </div>
+            </div>
         </uib-tab>
     </uib-tabset>
 

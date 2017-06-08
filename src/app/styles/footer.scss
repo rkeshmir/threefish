@@ -1,5 +1,5 @@
 footer {
-    background-color: #193a56;
+  background-color: $footer-color;
     min-height: 350px;
 }
 
@@ -42,7 +42,7 @@ footer {
 }
 
 .footer-ul li a {
-    color: #a0a3a4;
+  color: $footer-text-color;
     transition: color 0.2s linear 0s, background 0.2s linear 0s;
 }
 
@@ -86,7 +86,7 @@ footer {
 
 .copyright {
     min-height: 40px;
-    background-color: #337ab7;
+  background-color: $main-color;
 }
 
 .copyright p {
@@ -99,7 +99,7 @@ footer {
 .heading7 {
     font-size: 21px;
     font-weight: 700;
-    color: #d9d6d6;
+  color: $footer-heading-color;
     margin-bottom: 22px;
 }
 
@@ -145,4 +145,14 @@ footer {
     .copyright p {
         text-align: center;
     }
+}
+
+a {
+  color: $main-color;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: $main-dark;
+  text-decoration: underline;
 }
