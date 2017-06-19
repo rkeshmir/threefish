@@ -30,11 +30,11 @@
 				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).then(function () {
 				$log.debug('login successful');
-				$state.go('root.home');
+                $state.go('home.dashboard');
             }, function (error) {
                 console.log(error);
 				if(error.data)
-                	util.toast('error', error.data.message);
+                    console.log('error', error.data.message);
                 vm.loading = false;
 			});
 		}
