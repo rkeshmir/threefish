@@ -25,8 +25,8 @@ public class SwaggerConfig {
                 .paths(PathSelectors.regex("/.*"))
                 .build()
                 .apiInfo(new ApiInfo(
-                        "Simorgh Market Application",
-                        "Simorgh Market is an Android app-store which focuses on security apps",
+                        "ThreeFish Application",
+                        "Three Fish Startup",
                         "version 1.0.0",
                         "API TOS",
                         "rkeshmir@yahoo.com",

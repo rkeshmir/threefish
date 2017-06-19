@@ -1,6 +1,6 @@
 package com.threefish.semahi.conf;
 
-import ir.saafta.repo.EventRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
