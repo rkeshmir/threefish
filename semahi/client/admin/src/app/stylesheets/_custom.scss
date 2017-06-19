@@ -12,9 +12,22 @@ $font-weight-bold: 600;
 $font-size-large: 22px;
 
 
+@font-face {
+  font-family: 'Yekan';
+  src: url('../../assets/fonts/Yekan.eot');
+  src: url('../../assets/fonts/Yekan.eot') format("embedded-opentype"),
+  url('../../assets/fonts/Yekan.woff') format("woff"),
+  url('../../assets/fonts/Yekan.ttf') format("truetype"),
+  url('../../assets/fonts/Yekan.svg') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 // LAYOUT
 body {
   color: $text-color;
+  font-family: "Yekan", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .toolbar-button {

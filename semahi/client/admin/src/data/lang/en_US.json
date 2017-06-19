@@ -1,0 +1,226 @@
+{
+  "APP": {
+    "ACTIONS": {
+      "ADD": "add",
+      "APPROVE": "approve",
+      "BACK": "back",
+      "CANCEL": "cancel",
+      "CREATE": "create",
+      "DELETE": "delete",
+      "EDIT": "edit",
+      "GET": "get",
+      "OK": "ok",
+      "READ": "read",
+      "SEND": "send",
+      "SUBMIT": "submit",
+      "REMOVE": "remove",
+      "UPDATE": "update",
+      "UPLOAD": "upgrade"
+    },
+    "ERRORS": {
+      "401": "unauthorized",
+      "403": "permission denied",
+      "404": "not found",
+      "405": "not allowed",
+      "500": "internal sever error",
+      "DELETE": "error in delete",
+      "GET": "error in get",
+      "PUT": "error in put",
+      "POST": "error in post"
+    },
+    "LANG": {
+      "FA_IR": "persian",
+      "EN_US": "english"
+    },
+    "MAIN": {
+      "BACK_HOME": "back to home",
+      "BASE_INFORMATION": "base information",
+      "FOOTER": "all right reserved",
+      "TITLE": "ATM Support"
+    },
+    "MESSAGES": {
+      "FAIL": "failure",
+      "SUCCESS": "success full",
+      "WELCOME": "wellcome",
+      "SURE": "sure?"
+    },
+    "MODULES": {
+      "ATM": {
+        "ACTIONS": {
+          "ADD": "add atm",
+          "EDIT": "edit atm"
+        },
+        "IDENTIFICATION_NUMBER": "identification number",
+        "INCOME_DATA": {
+          "TITLE": "ارسال داده‌ها"
+        },
+        "INSTALLATION": {
+          "ACTIONS": {
+            "ADD": "add install location"
+          },
+          "LIST": "list install locations",
+          "NAME": "install location name",
+          "TITLE": "install location"
+        },
+        "LIST": "atms list",
+        "MODEL": {
+          "TITLE": "model"
+        },
+        "NAME": "atm name",
+        "TITLE": "atms management",
+        "TYPE": {
+          "ACTIONS": {
+            "ADD": "add atm type"
+          },
+          "LIST": "atm types list",
+          "NAME": "atm type",
+          "TITLE": "atm types management"
+        }
+      },
+      "AUTH": {
+        "FORGET_PASS": {
+          "TITLE": "forget password"
+        },
+        "INTERNAL_SERVER_ERROR": "internal sever error",
+        "LOGIN": {
+          "TITLE": "login"
+        },
+        "LOGOUT": "logout",
+        "NOT_FOUND": "not found",
+        "REGISTER": {
+          "TITLE": "register"
+        },
+        "RESET_PASS": {
+          "TITLE": "reset password"
+        },
+        "SHARE": {
+          "EMAIL": "email",
+          "PASSWORD": "password",
+          "PASSWORD_REPEAT": "password repeat",
+          "USERNAME": "username"
+        },
+        "UNAUTHORIZED": "unauthorized"
+      },
+      "BATTERY": {
+        "ACTIONS": {
+          "ADD": "add battery"
+        },
+        "LIST": "batteries list",
+        "NAME": "battery name",
+        "TITLE": "battery management"
+      },
+      "BRAND": {
+        "ACTIONS": {
+          "ADD": "add brand"
+        },
+        "LIST": "brands list",
+        "NAME": "brand name",
+        "TITLE": "brands managements"
+      },
+      "BRANCH": {
+        "ACTIONS": {
+          "ADD": "add branch",
+          "EDIT": "edit branch"
+        },
+        "ACTIVE": "active",
+        "CODE": "branch code",
+        "LIST": "branches list",
+        "NAME": "branch name",
+        "TITLE": "branch management"
+      },
+      "COMPANY": {
+        "ACTIONS": {
+          "ADD": "add company",
+          "EDIT": "edit company"
+        },
+        "LIST": "companies list",
+        "NAME": "company name",
+        "PROVIDER": "is provider ",
+        "RESPONSIBLE_PERSON": "responsible person",
+        "SUPPORTER": "is supporter",
+        "TITLE": "companies management"
+      },
+      "HOME": {
+        "TITLE": "dashboard"
+      },
+      "INSTALL_LOCATION": {
+        "ACTIONS": {
+          "ADD": "add install location"
+        },
+        "LIST": "list install locations",
+        "NAME": "install location name",
+        "TITLE": "install location"
+      },
+      "LOCATION": {
+        "ACTIONS": {
+          "ADD": "add location",
+          "EDIT": "edit location "
+        },
+        "LATITUDE": "latitude",
+        "LONGITUDE": "longitude",
+        "LIST": "locations list",
+        "NAME": "location name",
+        "TITLE": "locations management"
+      },
+      "MODEL": {
+        "ACTIONS": {
+          "ADD": "add model",
+          "EDIT": "edit model"
+        },
+        "TITLE": "models management",
+        "LIST": "models list",
+        "NAME": "model name",
+        "BRAND_NAME": "brand name",
+        "DEVICE_TYPE": "device type"
+      },
+      "PROVINCE": {
+        "ACTIONS": {
+          "ADD": "add province",
+          "EDIT": "edit province"
+        },
+        "LIST": "provinces list",
+        "NAME": "province name",
+        "TITLE": "provinces management"
+      },
+      "REGION": {
+        "ACTIONS": {
+          "ADD": "add region",
+          "EDIT": "edit region"
+        },
+        "LIST": "regions list",
+        "NAME": "region name",
+        "TITLE": "regions management"
+      },
+      "TASK": {
+        "ACTIONS": {
+          "ADD": "add task",
+          "EDIT": "edit task"
+        },
+        "LIST": "tasks list",
+        "NAME": "task name",
+        "TITLE": "tasks management"
+      },
+      "UPS": {
+        "ACTIONS": {
+          "ADD": "add ups",
+          "EDIT": "edit ups"
+        },
+        "LIST": "upses list",
+        "TITLE": "upses management",
+        "BATTERY_COUNT": "battery count",
+        "BATTERY_TYPE": "battery type"
+      }
+    },
+    "SHARE": {
+      "ADDRESS": "address",
+      "ASSET_NUMBER": "serial number",
+      "BROWSE": "browse",
+      "DATE": "date",
+      "INDEX": "index",
+      "OPERATION": "operation",
+      "PHONE_NUMBER": "phone number",
+      "POSTAL_CODE": "postal code",
+      "SERIAL_NUMBER": "serial number"
+    }
+  }
+}

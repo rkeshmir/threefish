@@ -42,7 +42,7 @@ gulp.task('serve', ['watch'], function () {
     paths.tmp + '/serve/*.html',
     paths.tmp + '/serve/{app,components}/**/*.html',
     paths.src + '/{app,components}/**/*.html'
-  ]);
+  ], 'firefox');
 });
 
 gulp.task('serve:dist', ['build'], function () {

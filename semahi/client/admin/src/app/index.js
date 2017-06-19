@@ -1,10 +1,26 @@
 'use strict';
 
-angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies',
-  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table'])
+angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ADM-dateTimePicker',
+  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table', 'auth'])
 
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
-                    $mdIconProvider) {
+                    $mdIconProvider, $httpProvider, ADMdtpProvider) {
+
+      //  @desc add $http Interceptor
+      // $httpProvider.interceptors.push('authInterceptor');
+      $httpProvider.defaults.withCredentials = true;
+      $httpProvider.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8';
+      // disable # in url
+      // $locationProvider.html5Mode(true);
+
+      ADMdtpProvider.setOptions({
+          autoClose: true,
+          calType: 'jalali',
+          dtpType: 'date',
+          format: 'YYYY-MM-DD',
+          freezeInput: true
+      });
+
     $stateProvider
       .state('home', {
         url: '',

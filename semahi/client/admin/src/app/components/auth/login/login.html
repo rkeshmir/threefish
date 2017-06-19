@@ -1,0 +1,20 @@
+<div class="login-page">
+    <div class="form">
+        <!--<form class="register-form">
+            <input type="text" placeholder="name"/>
+            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="email address"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>-->
+        <img src="../../../../assets/logo.png" ng-show="!vm.loading">
+        <img src="../../../../assets/images/loading.gif" ng-show="vm.loading">
+        <form class="login-form" ng-submit="vm.login()" ng-show="!vm.loading">
+            <input type="text" placeholder="نام کاربری" data-ng-model="vm.username"/>
+            <input type="password" placeholder="گذرواژه" data-ng-model="vm.password"/>
+            <button type="submit" class="fa fa-sign-in">
+            </button>
+            <!--<p class="message">Not registered? <a href="#">Create an account</a></p>-->
+        </form>
+    </div>
+</div>
