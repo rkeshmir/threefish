@@ -5,11 +5,12 @@
         .controller('UserController', [
             'tableService',
             '$scope',
+            'UserService',
             UserController
 
         ]);
 
-    function UserController(tableService, $scope, RequestService) {
+    function UserController(tableService, $scope, UserService) {
         var vm = this;
 
         vm.tableData = [];
@@ -42,12 +43,19 @@
         };
 
         function GetItemsData(query) {
-            tableService
+            /*tableService
                 .loadByPagination(query)
                 .then(function (tableData) {
                     vm.tableData = tableData.items;
                     // Represents the count of database count of records, not items array!
                     vm.totalItems = tableData.count;
+
+             });*/
+            UserService.getUsers()
+                .then(function (usersData) {
+                    vm.tableData = usersData.content;
+                    // Represents the count of database count of records, not items array!
+                    vm.totalItems = usersData.totalItems;
 
                 });
 

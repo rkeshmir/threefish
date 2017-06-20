@@ -6,7 +6,7 @@
         .factory('RequestService', RequestService);
 
     /** @ngInject */
-    function RequestService($http, $httpParamSerializer, $q, host, Util) {
+    function RequestService($http, $httpParamSerializer, $q, host) {
         return theService;
 
         function theService(base) {
@@ -113,7 +113,7 @@
         function errorCallback(response) {
             var message = (response && response.data && response.data.message) ?
                 'APP.ERRORS.' + response.data.message : '';
-            Util.toast('error', message);
+            console.error('error', message);
             return $q.reject(response);
         }
 

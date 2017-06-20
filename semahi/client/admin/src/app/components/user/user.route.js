@@ -10,7 +10,7 @@
 
     /** @ngInject */
     function routeConfig($stateProvider) {
-        /*$stateProvider
+        $stateProvider
          .state('home.users', {
          url: '/user',
          controller: 'UserController',
@@ -21,7 +21,7 @@
          }
          });
 
-         ;*/
+        ;
     }
 
 })();
