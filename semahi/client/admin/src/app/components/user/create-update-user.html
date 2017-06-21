@@ -1,0 +1,36 @@
+<!-- TODO: Add validations -->
+<md-content md-theme="dark" class="md-padding" layout="row" layout-sm="column">
+    <md-input-container>
+        <label>Username</label>
+        <input ng-model="vm.username    ">
+    </md-input-container>
+    <md-input-container>
+        <label>Email</label>
+        <input ng-model="vm.user.email" type="email">
+    </md-input-container>
+    <img class="img-circle" ng-if="vm.user.profilePic" ng-src="{{vm.host}}{{vm.user.profilePic.url}}">
+</md-content>
+<md-content class="md-padding">
+    <form name="userForm">
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>First Name</label>
+                <input ng-model="vm.user.name"
+                       placeholder="name">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Last Name</label>
+                <input ng-model="vm.user.family">
+            </md-input-container>
+        </div>
+        <md-input-container flex>
+            <label>Address</label>
+            <input ng-model="vm.user.address">
+        </md-input-container>
+        <md-input-container flex>
+            <label>About user</label>
+            <textarea ng-model="vm.user.biography" columns="1"
+                      md-maxlength="150"></textarea>
+        </md-input-container>
+    </form>
+</md-content>

@@ -184,3 +184,27 @@ md-backdrop.md-sidenav-backdrop {
 .orange .md-container {
   background-color: rgb(255, 236, 201)
 }
+
+.auth-admin, .enabled {
+  color: #26a69a;
+}
+
+.auth-user {
+  color: #29b6f6;
+}
+
+.auth-supervisor {
+  color: #cddc39;
+}
+
+.disabled, .danger {
+  color: #7e4311;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.c-default {
+  cursor: default;
+}

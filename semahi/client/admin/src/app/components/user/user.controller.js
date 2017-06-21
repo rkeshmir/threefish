@@ -29,6 +29,8 @@
             return T;
         };
         var lastQuery = null;
+        vm.deleteUser = deleteUser;
+        vm.editUser = editUser;
         vm.getItems = function () {
             /**
              * I don't know why this function is being called too many times,
@@ -63,6 +65,23 @@
 
         GetItemsData($scope.query);
 
+        function deleteUser(event, item) {
+            console.log('event', event);
+            event.stopPropagation();
+            event.preventDefault();
+            UserService.deleteUser(item.username).then(function () {
+                GetItemsData($scope.query);
+            }, function (error) {
+                console.error('error in removing user', error);
+            })
+        }
+
+        function editUser(event, item) {
+            console.log('event', event);
+            event.stopPropagation();
+            event.preventDefault();
+
+        }
 
     }
 

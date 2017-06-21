@@ -14,6 +14,8 @@
                 <th md-column>Username</th>
                 <th md-column>Name</th>
                 <th md-column>Enabled</th>
+                <th md-column>Roles</th>
+                <th md-column>Actions</th>
                 <!--<th md-column md-order-by="nameToLower"><span>Name</span></th>
                 <th md-column md-numeric md-order-by="calories.value"><span>Calories</span></th>
                 <th md-column md-numeric>Fat (g)</th>
@@ -26,18 +28,42 @@
                 <td md-cell>{{item.username}}</td>
                 <td md-cell>{{item.completeName}}</td>
                 <td md-cell>
-                    <i ng-show="item.enabled" class="material-icons">verified_user</i>
-                    <i ng-hide="item.enabled" class="material-icons">error_outline</i>
+                    <i ng-show="item.enabled" class="material-icons enabled c-default">
+                        <md-tooltip>Active</md-tooltip>
+                        verified_user
+                    </i>
+                    <i ng-hide="item.enabled" class="material-icons disabled c-default">
+                        <md-tooltip>Disabled</md-tooltip>
+                        error_outline
+                    </i>
+                </td>
+                <td class="md-cell">
+                    <i class="material-icons c-default"
+                       ng-class="{'auth-admin':role.authority === 'admin', 'auth-user': role.authority === 'user', 'auth-supervisor': role.authority === 'supervisor'}"
+                       ng-repeat="role in item.authorities">
+                        <md-tooltip ng-bind="role.authority|uppercase"></md-tooltip>
+                        account_circle
+                    </i>
+                </td>
+                <td class="md-cell">
+                    <i class="material-icons enabled c-pointer"
+                       ui-sref="home.create-update-user({'method':'update','username':item.username})">
+                        <md-tooltip>Edit</md-tooltip>
+                        create
+                    </i>
+                    <i class="material-icons danger c-pointer" ng-click="vm.deleteUser($event, item)">
+                        <md-tooltip>Remove</md-tooltip>
+                        delete_forever</i>
                 </td>
                 <!--<td md-cell>{{item.issue}}</td>
                 <td md-cell>{{item.progress}}</td>
                 <td md-cell>{{item.status}}</td>-->
-                <td md-cell>
+                <!--<td md-cell>
                     <md-progress-linear class="table-progress {{item.class}}"
                                         md-mode="determinate"
                                         value={{item.progress}}>
                     </md-progress-linear>
-                </td>
+                </td>-->
 
 
             </tr>
