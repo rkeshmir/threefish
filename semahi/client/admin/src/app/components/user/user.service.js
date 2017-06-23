@@ -6,7 +6,7 @@
         .factory('UserService', UserService);
 
     /** @ngInject */
-    function UserService($log, $http, host) {
+    function UserService($log, $http, host, Upload) {
         var base = host + 'user/';
         var service = {
             getUsers: getUsers,
@@ -18,7 +18,8 @@
             deleteUser: deleteUser,
             bulkDelete: bulkDelete,
             resetPassword: resetPassword,
-            addCredit: addCredit
+            addCredit: addCredit,
+            updateProfilePic: updateProfilePic
         };
         return service;
 
@@ -89,6 +90,16 @@
                 url += 'username='+username+'&';
             });
             return $http.delete(url)
+                .then(successCallback);
+        }
+
+        function updateProfilePic(username, dataUrl) {
+            var url = base + username + '/picture';
+            return Upload.upload({
+                url: url,
+                file: Upload.dataUrltoBlob(dataUrl, 'image.png'),
+                method: 'POST'
+            })
                 .then(successCallback);
         }
 

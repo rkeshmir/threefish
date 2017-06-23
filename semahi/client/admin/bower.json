@@ -20,7 +20,10 @@
     "angular-translate": "^2.15.1",
     "angular-translate-loader-static-files": "^2.15.1",
     "moment": "^2.18.1",
-    "moment-jalaali": "^0.6.1"
+    "moment-jalaali": "^0.6.1",
+    "angular-img-cropper": "^1.1.0",
+    "ng-img-crop-full-extended": "ngImgCropFullExtended#^0.6.2",
+    "ng-file-upload": "^12.2.13"
   },
   "overrides": {
     "adm-dtp": {

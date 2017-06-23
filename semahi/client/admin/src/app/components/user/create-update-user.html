@@ -12,7 +12,7 @@
         <label>Phone</label>
         <input ng-model="vm.user.mobilePhone" type="tel">
     </md-input-container>
-    <img class="img-circle" ng-if="vm.user.profilePic" ng-src="{{vm.host}}{{vm.user.profilePic.url}}">
+    <img class="img-circle" ng-click="vm.showDialog()" ng-if="vm.user.profilePicture" ng-src="{{vm.host}}{{vm.user.profilePicture.url}}">
 </md-content>
 <md-content class="md-padding">
     <form name="userForm">
@@ -54,7 +54,7 @@
         </md-input-container>
     </form>
 </md-content>
-<md-content md-theme="gray" class="md-padding" layout="row" layout-sm="column">
+<md-content md-theme="grey" class="md-padding" layout="row" layout-sm="column">
     <md-button class="md-accent md-raised" ng-click="vm.save()">
         <i class="material-icons">check</i>
         <md-tooltip><span ng-bind="vm.method === 'create' ? 'Create User' : 'Update User'"></span></md-tooltip>
@@ -64,7 +64,9 @@
         <md-tooltip><span ng-bind="vm.method === 'create' ? 'Clear' : 'Revert'"></span></md-tooltip>
     </md-button>
 </md-content>
+<md-content class="md-padding"  ng-if="vm.method === 'update'">
 
+</md-content>
 <md-content class="md-padding"  ng-if="vm.method === 'update'">
     <div layout layout-sm="column">
         <md-input-container flex>
@@ -77,7 +79,7 @@
         </md-input-container>
     </div>
 </md-content>
-<md-content md-theme="gray" class="md-padding" layout="row" layout-sm="column" ng-if="vm.method === 'update'">
+<md-content md-theme="grey" class="md-padding" layout="row" layout-sm="column" ng-if="vm.method === 'update'">
     <md-button class="md-accent md-raised" ng-click="vm.resetPassword()" ng-disabled="vm.password !== vm.passwordRepeat">
         <i class="material-icons">check</i>
         <md-tooltip>Reset Password</md-tooltip>

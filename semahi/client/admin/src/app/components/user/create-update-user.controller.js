@@ -7,10 +7,11 @@
             '$stateParams',
             'host',
             '$mdToast',
+            '$mdDialog',
             CreateUpdateUserController
         ]);
 
-    function CreateUpdateUserController(UserService, $stateParams, host, $mdToast) {
+    function CreateUpdateUserController(UserService, $stateParams, host, $mdToast, $mdDialog) {
         var vm = this;
         vm.method = $stateParams.method;
         vm.username = $stateParams.username;
@@ -18,7 +19,8 @@
         vm.save = save;
         vm.revert = revert;
         vm.resetPassword = resetPassword;
-
+        vm.tmpDate = new Date();
+        vm.showDialog = showDialog;
 
         UserService.getAuthorities().then(function (data) {
            vm.authorities = data;
@@ -113,6 +115,67 @@
                         .hideDelay(5000)
                     );
                 })
+        }
+
+        function showDialog($event) {
+            var parentEl = angular.element(document.body);
+            $mdDialog.show({
+                parent: parentEl,
+                targetEvent: $event,
+                templateUrl: 'app/components/user/upload-picture-dialog.html',
+                locals: {
+                    user: vm.user,
+                    host: vm.host
+                },
+                controller: DialogController,
+                controllerAs: 'dialogVm',
+                flex: '80%'
+            });
+            function DialogController($scope, $mdDialog, user) {
+                var dialogVm = this;
+                dialogVm.user = user;
+                dialogVm.closeDialog = function() {
+                    $mdDialog.hide();
+                };
+                dialogVm.updateProfilePic = updateProfilePic;
+                function updateProfilePic(dataUrl) {
+                    vm.loading = true;
+                    UserService.updateProfilePic(vm.user.username, dataUrl, dialogVm.picLabel)
+                        .then(
+                            function (response) {
+                                vm.user.profilePicture = response;
+                                dialogVm.picLabel = '';
+                                $mdToast.show($mdToast.simple()
+                                    .position('top right')
+                                    .toastClass('b-success')
+                                    .textContent('Picture successfully updated')
+                                    .hideDelay(5000)
+                                );
+                                dialogVm.tmpDate = new Date();
+                                dialogVm.cropper = {};
+                                dialogVm.cropper.sourceImage = null;
+                                dialogVm.cropper.croppedImage = null;
+                                dialogVm.loading = false;
+                                $mdDialog.hide();
+                            },
+                            function (response) {
+                                if (response.status > 0) {
+                                    dialogVm.errorMsg = response.status + ': ' + response.data;
+                                }
+                                $mdToast.show($mdToast.simple()
+                                    .position('top right')
+                                    .toastClass('b-success')
+                                    .textContent('Error in updating profile picture')
+                                    .hideDelay(5000)
+                                );
+                                dialogVm.loading = false;
+                            },
+                            function (evt) {
+                                dialogVm.progress = parseInt(100.0 * evt.loaded / evt.total);
+                                dialogVm.loading = false;
+                            });
+                }
+            }
         }
 
     }

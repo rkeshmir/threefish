@@ -1,5 +1,6 @@
 package com.threefish.semahi.web;
 
+import com.threefish.semahi.model.Picture;
 import com.threefish.semahi.model.Role;
 import com.threefish.semahi.model.User;
 import com.threefish.semahi.repo.*;
@@ -19,7 +20,10 @@ import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,18 +39,20 @@ public class UserController {
     private final UserDetailManager userDetailManager;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final PictureRepository pictureRepository;
     @Qualifier("sessionRegistry")
     private SessionRegistry sessionRegistry;
 
     @Autowired
     public UserController(UserDetailManager userDetailManager, UserRepository userRepository,
                           RoleRepository roleRepository,
-                          SessionRegistry sessionRegistry
+                          SessionRegistry sessionRegistry, PictureRepository pictureRepository
     ) {
         this.userDetailManager = userDetailManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.sessionRegistry = sessionRegistry;
+        this.pictureRepository = pictureRepository;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -59,6 +65,22 @@ public class UserController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
         userDetailManager.createUser(user);
+    }
+
+    @RequestMapping(value = "/{username}/picture", method = RequestMethod.POST, consumes = "multipart/*")
+    public Picture saveBanner(@PathVariable String username, MultipartFile file) throws IOException, ParseException {
+        User user = (User) userDetailManager.loadUserByUsername(username);
+        if (user.getProfilePicture() == null) {
+            Picture picture = new Picture(file.getBytes(), user.getUsername(), "profile", file.getOriginalFilename());
+            picture = pictureRepository.save(picture);
+            user.setProfilePicture(picture);
+            userDetailManager.save(user);
+            return picture;
+        } else {
+            Picture picture = user.getProfilePicture();
+            picture.setData(file.getBytes());
+            return pictureRepository.save(picture);
+        }
     }
 
     @PreAuthorize("hasAuthority('admin')")

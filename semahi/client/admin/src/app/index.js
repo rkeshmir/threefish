@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('angularMaterialAdmin', ['ngAnimate', 'ngCookies', 'ADM-dateTimePicker',
-  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table', 'auth'])
+  'ngSanitize', 'ui.router', 'ngMaterial', 'nvd3', 'app' , 'md.data.table', 'auth', 'ngFileUpload',
+    'ngImgCrop',
+    'angular-img-cropper'])
 
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
                     $mdIconProvider, $httpProvider, ADMdtpProvider) {
