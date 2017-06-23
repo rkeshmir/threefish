@@ -1,8 +1,10 @@
 package com.threefish.semahi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import springfox.documentation.spring.web.json.Json;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,7 +18,7 @@ public class User implements UserDetails {
     private String username;
     private String name;
     private String family;
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private Boolean enabled;
     private String address;

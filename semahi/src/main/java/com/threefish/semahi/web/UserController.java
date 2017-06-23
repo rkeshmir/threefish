@@ -148,6 +148,16 @@ public class UserController {
         userDetailManager.deleteUser(username);
     }
 
+    @PreAuthorize("hasAuthority('admin')")
+    @RequestMapping(value = "/bulkDelete", method = RequestMethod.DELETE)
+    public void deleteUsersByUsername(String[] username) {
+        if(username == null)
+            return;
+        for (String s : username) {
+            userDetailManager.deleteUser(s);
+        }
+    }
+
 
     @PreAuthorize("hasAnyAuthority('admin')")
     @RequestMapping(value = "/getAllPrincipals", method = RequestMethod.GET)
