@@ -2,11 +2,15 @@
 <md-content md-theme="dark" class="md-padding" layout="row" layout-sm="column">
     <md-input-container>
         <label>Username</label>
-        <input ng-model="vm.username    ">
+        <input ng-model="vm.user.username">
     </md-input-container>
     <md-input-container>
         <label>Email</label>
         <input ng-model="vm.user.email" type="email">
+    </md-input-container>
+    <md-input-container>
+        <label>Phone</label>
+        <input ng-model="vm.user.mobilePhone" type="tel">
     </md-input-container>
     <img class="img-circle" ng-if="vm.user.profilePic" ng-src="{{vm.host}}{{vm.user.profilePic.url}}">
 </md-content>
@@ -15,12 +19,28 @@
         <div layout layout-sm="column">
             <md-input-container flex>
                 <label>First Name</label>
-                <input ng-model="vm.user.name"
-                       placeholder="name">
+                <input ng-model="vm.user.name">
             </md-input-container>
             <md-input-container flex>
                 <label>Last Name</label>
                 <input ng-model="vm.user.family">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Roles</label>
+                <md-select ng-model="vm.user.authorities" multiple="true"
+                           ng-model-options="{trackBy: '$value.authority'}">
+                    <md-option ng-value="auth" ng-repeat="auth in vm.authorities">{{ auth.caption }} - {{auth.authority}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column" ng-if="vm.method === 'create'">
+            <md-input-container flex>
+                <label>Password</label>
+                <input ng-model="vm.user.password" type="password">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Password Repeat</label>
+                <input ng-model="vm.passwordRepeat" type="password">
             </md-input-container>
         </div>
         <md-input-container flex>
@@ -33,4 +53,33 @@
                       md-maxlength="150"></textarea>
         </md-input-container>
     </form>
+</md-content>
+<md-content md-theme="gray" class="md-padding" layout="row" layout-sm="column">
+    <md-button class="md-accent md-raised" ng-click="vm.save()">
+        <i class="material-icons">check</i>
+        <md-tooltip><span ng-bind="vm.method === 'create' ? 'Create User' : 'Update User'"></span></md-tooltip>
+    </md-button>
+    <md-button class="md-warn md-raised" ng-click="vm.revert()">
+        <i class="material-icons">cancel</i>
+        <md-tooltip><span ng-bind="vm.method === 'create' ? 'Clear' : 'Revert'"></span></md-tooltip>
+    </md-button>
+</md-content>
+
+<md-content class="md-padding"  ng-if="vm.method === 'update'">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Password</label>
+            <input ng-model="vm.password" type="password">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Password Repeat</label>
+            <input ng-model="vm.passwordRepeat" type="password">
+        </md-input-container>
+    </div>
+</md-content>
+<md-content md-theme="gray" class="md-padding" layout="row" layout-sm="column" ng-if="vm.method === 'update'">
+    <md-button class="md-accent md-raised" ng-click="vm.resetPassword()" ng-disabled="vm.password !== vm.passwordRepeat">
+        <i class="material-icons">check</i>
+        <md-tooltip>Reset Password</md-tooltip>
+    </md-button>
 </md-content>

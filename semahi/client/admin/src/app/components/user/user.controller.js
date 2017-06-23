@@ -5,12 +5,13 @@
         .controller('UserController', [
             'tableService',
             '$scope',
+            '$mdToast',
             'UserService',
             UserController
 
         ]);
 
-    function UserController(tableService, $scope, UserService) {
+    function UserController(tableService, $scope, $mdToast, UserService) {
         var vm = this;
 
         vm.tableData = [];
@@ -23,13 +24,13 @@
             limit: 10,
             page: 1
         };
-        $scope.selected = [];
 
         $scope.render = function (T) {
             return T;
         };
         var lastQuery = null;
         vm.deleteUser = deleteUser;
+        vm.bulkDelete = bulkDelete;
         vm.editUser = editUser;
         vm.getItems = function () {
             /**
@@ -70,6 +71,12 @@
             event.stopPropagation();
             event.preventDefault();
             UserService.deleteUser(item.username).then(function () {
+                $mdToast.show($mdToast.simple()
+                    .position('top right')
+                    .toastClass('b-success')
+                    .textContent(item.username + ' successfully deleted.')
+                    .hideDelay(5000)
+                );
                 GetItemsData($scope.query);
             }, function (error) {
                 console.error('error in removing user', error);
@@ -81,6 +88,31 @@
             event.stopPropagation();
             event.preventDefault();
 
+        }
+
+        function bulkDelete() {
+            if(!$scope.selected.length)
+                return;
+            var usernames = [];
+            $scope.selected.forEach(function (user) {
+                usernames.push(user.username);
+            });
+            return UserService.bulkDelete(usernames).then(function () {
+                $mdToast.show($mdToast.simple()
+                    .position('top right')
+                    .toastClass('b-success')
+                    .textContent('Users successfully deleted.')
+                    .hideDelay(5000)
+                );
+                GetItemsData($scope.query);
+            }, function (error) {
+                $mdToast.show($mdToast.simple()
+                    .position('top right')
+                    .toastClass('b-error')
+                    .textContent('Error in deleting selected users.')
+                    .hideDelay(5000)
+                );
+            })
         }
 
     }

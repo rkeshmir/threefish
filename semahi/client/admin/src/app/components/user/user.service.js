@@ -16,6 +16,7 @@
             createUser: createUser,
             updateUser: updateUser,
             deleteUser: deleteUser,
+            bulkDelete: bulkDelete,
             resetPassword: resetPassword,
             addCredit: addCredit
         };
@@ -76,6 +77,17 @@
 
         function deleteUser(username) {
             var url = base + username;
+            return $http.delete(url)
+                .then(successCallback);
+        }
+
+        function bulkDelete(usernames) {
+            var url = base + 'bulkDelete?';
+            if(usernames === null || usernames === undefined || !usernames.length)
+                return;
+            usernames.forEach(function (username) {
+                url += 'username='+username+'&';
+            });
             return $http.delete(url)
                 .then(successCallback);
         }

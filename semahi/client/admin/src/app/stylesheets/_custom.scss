@@ -208,3 +208,12 @@ md-backdrop.md-sidenav-backdrop {
 .c-default {
   cursor: default;
 }
+md-toast.md-default-theme.b-success .md-toast-content,
+md-toast.b-success .md-toast-content {
+  background-color: #26a69a;
+}
+
+md-toast.md-default-theme.b-error .md-toast-content,
+md-toast.b-error .md-toast-content {
+  background-color: #7e4311;
+}

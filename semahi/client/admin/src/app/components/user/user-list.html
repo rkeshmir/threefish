@@ -5,6 +5,20 @@
             <span>User Management</span>
         </div>
     </md-toolbar>
+    <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <i class="material-icons enabled c-pointer"
+               ui-sref="home.create-update-user({'method':'create'})">
+                <md-tooltip>Add New User</md-tooltip>
+                add_circle
+            </i>
+            <i class="material-icons danger c-pointer"
+               ng-click="vm.bulkDelete()">
+                <md-tooltip>Delete Selected Users</md-tooltip>
+                delete_sweep
+            </i>
+        </div>
+    </md-toolbar>
 
     <!-- exact table from live demo -->
     <md-table-container>
