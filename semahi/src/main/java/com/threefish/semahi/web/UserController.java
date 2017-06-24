@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void createUser(@RequestBody User user) {
+    public User createUser(@RequestBody User user) {
         if (user.getUsername() == null)
             user.setUsername(user.getMobilePhone());
         if (userDetailManager.loadUserByUsername(user.getUsername()) != null)
@@ -65,6 +65,7 @@ public class UserController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setEnabled(true);
         userDetailManager.createUser(user);
+        return userRepository.findOne(user.getUsername());
     }
 
     @RequestMapping(value = "/{username}/picture", method = RequestMethod.POST, consumes = "multipart/*")
