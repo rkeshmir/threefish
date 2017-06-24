@@ -5,13 +5,14 @@
         .controller('CreateUpdateUserController', [
             'UserService',
             '$stateParams',
+            '$state',
             'host',
             '$mdToast',
             '$mdDialog',
             CreateUpdateUserController
         ]);
 
-    function CreateUpdateUserController(UserService, $stateParams, host, $mdToast, $mdDialog) {
+    function CreateUpdateUserController(UserService, $stateParams, $state, host, $mdToast, $mdDialog) {
         var vm = this;
         vm.method = $stateParams.method;
         vm.username = $stateParams.username;
@@ -39,6 +40,7 @@
         
         function createUser() {
             UserService.createUser(vm.user).then(function (data) {
+                console.log(data);
                 vm.user = data;
                 $mdToast.show($mdToast.simple()
                     .position('top right')
@@ -46,6 +48,7 @@
                     .textContent('User successfully created.')
                     .hideDelay(5000)
                 );
+                $state.go('home.create-update-user', {'method': 'update', 'username': vm.user.username})
             }, function (error) {
                 $mdToast.show($mdToast.simple()
                     .position('top right')
@@ -119,7 +122,7 @@
 
         function showDialog($event) {
             var parentEl = angular.element(document.body);
-            $mdDialog.show({
+            var dialog = $mdDialog.show({
                 parent: parentEl,
                 targetEvent: $event,
                 templateUrl: 'app/components/user/upload-picture-dialog.html',
@@ -131,9 +134,13 @@
                 controllerAs: 'dialogVm',
                 flex: '80%'
             });
-            function DialogController($scope, $mdDialog, user) {
+            dialog.then(function () {
+
+            });
+            function DialogController($scope, $mdDialog, user, host) {
                 var dialogVm = this;
                 dialogVm.user = user;
+                dialogVm.host = host;
                 dialogVm.closeDialog = function() {
                     $mdDialog.hide();
                 };
@@ -151,7 +158,7 @@
                                     .textContent('Picture successfully updated')
                                     .hideDelay(5000)
                                 );
-                                dialogVm.tmpDate = new Date();
+                                vm.tmpDate = new Date();
                                 dialogVm.cropper = {};
                                 dialogVm.cropper.sourceImage = null;
                                 dialogVm.cropper.croppedImage = null;

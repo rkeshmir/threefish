@@ -1,45 +1,50 @@
-<md-dialog aria-label="List dialog">
+<md-dialog aria-label="List dialog" flex="70">
     <md-dialog-content>
-        <form name="uploadLogo">
-            <div class="form-group">
-                <img ng-show="dialogVm.user.profilePicture.id"
-                     style="border: ridge 1px blanchedalmond;margin: 5px auto;"
-                     ng-src="{{dialogVm.host}}{{dialogVm.user.profilePicture.url}}?data={{dialogVm.tmpDate}}"
-                     width="60">
-                <label for="logo-input">
-                        <span class="btn btn-default">
-                            <i class="material-icons">photo</i>
-                            <span ng-bind="dialogVm.cropper.sourceImage.name ?  dialogVm.cropper.sourceImage.name : 'Brows Image'"></span>
-                            &nbsp;
-                            <span ng-bind="'(Size: ' + (dialogVm.cropper.sourceImage.size/1000) + 'KB)'"
-                                  ng-show="dialogVm.cropper.sourceImage.size"></span>
-                        </span>
-                </label>
-                <input ng-disabled="dialogVm.loading" name="logo" class="form-control" id="logo-input" type="file" img-cropper-fileread
-                       image="dialogVm.cropper.sourceImage" style="position: fixed; top: -100em"/>
-
+        <md-content class="md-padding no-scroll" layout="row" layout-sm="column">
+            <div layout="row" layout-align="start center" flex="30">
+                <span>
+                    <img ng-show="dialogVm.user.profilePicture.id"
+                         class="img-circle"
+                         ng-src="{{dialogVm.host}}{{dialogVm.user.profilePicture.url}}"
+                         width="60">
+                <md-tooltip>Current Picture</md-tooltip>
+                </span>
             </div>
             <img ng-src="{{dialogVm.cropper.sourceImage}}" id="source-image" style="position: absolute;top: -1000000px">
+        </md-content>
+        <div layout="row" layout-align="center center" flex="100">
             <div ng-show="dialogVm.cropper.sourceImage">
                 <canvas width="{{dialogVm.cropperWidth}}" height="400" id="canvas" image-cropper
                         image="dialogVm.cropper.sourceImage"
                         cropped-image="dialogVm.cropper.croppedImage" crop-width="200" crop-height="200"
                         keep-aspect="true" touch-radius="30" crop-area-bounds="dialogVm.bounds"></canvas>
             </div>
-            <div class="form-group">
-                <md-button class="md-accent md-raised" ng-disabled="!dialogVm.cropper.sourceImage || dialogVm.loading"
-                           ng-click="dialogVm.updateProfilePic(dialogVm.cropper.croppedImage)">
-                    <md-tooltip>Upload Image</md-tooltip>
-                    <i class="material-icons" ng-hide="dialogVm.loading">file_upload</i>
-                    <i class="material-icons" ng-show="dialogVm.loading">loop</i>
-                </md-button>
+        </div>
 
-            </div>
-        </form>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button ng-click="dialogdialogVm.closeDialog()" class="md-primary">
-            Close Dialog
+        <label class="md-accent md-raised md-button md-ink-ripple" for="logo-input">
+                        <span class="md-accent md-raised c-pointer">
+                            <i class="material-icons">photo</i> Select Image
+                            <md-tooltip
+                                    ng-bind="dialogVm.cropper.sourceImage.name ?  dialogVm.cropper.sourceImage.name : 'Brows Image'"></md-tooltip>
+                            &nbsp;
+                            <span ng-bind="'(Size: ' + (dialogVm.cropper.sourceImage.size/1000) + 'KB)'"
+                                  ng-show="dialogVm.cropper.sourceImage.size"></span>
+                        </span>
+        </label>
+        <input ng-disabled="dialogVm.loading" name="logo" class="form-control" id="logo-input" type="file"
+               img-cropper-fileread
+               image="dialogVm.cropper.sourceImage" style="position: fixed; top: -100em"/>
+        <md-button class="md-accent md-raised" ng-disabled="!dialogVm.cropper.sourceImage || dialogVm.loading"
+                   ng-click="dialogVm.updateProfilePic(dialogVm.cropper.croppedImage)">
+            <md-tooltip>Upload Image</md-tooltip>
+            <i class="material-icons" ng-hide="dialogVm.loading">file_upload</i>
+            <i class="material-icons" ng-show="dialogVm.loading">loop</i>
+        </md-button>
+        <md-button ng-click="dialogVm.closeDialog()" class="md-primary">
+            <i class="material-icons">cancel</i>
+            <md-tooltip>Cancel</md-tooltip>
         </md-button>
     </md-dialog-actions>
 </md-dialog>

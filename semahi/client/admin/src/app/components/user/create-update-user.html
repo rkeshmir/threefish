@@ -2,7 +2,7 @@
 <md-content md-theme="dark" class="md-padding" layout="row" layout-sm="column">
     <md-input-container>
         <label>Username</label>
-        <input ng-model="vm.user.username">
+        <input ng-model="vm.user.username" ng-disabled="vm.method === 'update'">
     </md-input-container>
     <md-input-container>
         <label>Email</label>
@@ -12,7 +12,14 @@
         <label>Phone</label>
         <input ng-model="vm.user.mobilePhone" type="tel">
     </md-input-container>
-    <img class="img-circle" ng-click="vm.showDialog()" ng-if="vm.user.profilePicture" ng-src="{{vm.host}}{{vm.user.profilePicture.url}}">
+    <div layout="row" layout-align="end center" flex="50" ng-show="vm.method === 'update'">
+        <span>
+            <img class="img-circle c-pointer" ng-click="vm.showDialog()"
+                 ng-src="{{vm.user.profilePicture ? vm.host + vm.user.profilePicture.url + '?data=' + vm.tmpDate : '../../assets/images/user-icon.png'}}">
+            <md-tooltip>Update Profile Picture</md-tooltip>
+        </span>
+    </div>
+
 </md-content>
 <md-content class="md-padding">
     <form name="userForm">
@@ -82,6 +89,6 @@
 <md-content md-theme="grey" class="md-padding" layout="row" layout-sm="column" ng-if="vm.method === 'update'">
     <md-button class="md-accent md-raised" ng-click="vm.resetPassword()" ng-disabled="vm.password !== vm.passwordRepeat">
         <i class="material-icons">check</i>
-        <md-tooltip>Reset Password</md-tooltip>
+        <md-tooltip md-direction="top">Reset Password</md-tooltip>
     </md-button>
 </md-content>

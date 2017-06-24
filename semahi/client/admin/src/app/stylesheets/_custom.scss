@@ -56,6 +56,7 @@ body {
 
 .img-circle {
   height: 50px;
+  width: 50px;
   border-radius: 50%;
   margin: 0 10px;
 }
@@ -216,4 +217,8 @@ md-toast.b-success .md-toast-content {
 md-toast.md-default-theme.b-error .md-toast-content,
 md-toast.b-error .md-toast-content {
   background-color: #7e4311;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
