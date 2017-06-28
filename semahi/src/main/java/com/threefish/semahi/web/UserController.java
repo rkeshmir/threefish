@@ -68,8 +68,9 @@ public class UserController {
         return userRepository.findOne(user.getUsername());
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @RequestMapping(value = "/{username}/picture", method = RequestMethod.POST, consumes = "multipart/*")
-    public Picture saveBanner(@PathVariable String username, MultipartFile file) throws IOException, ParseException {
+    public Picture saveProfile(@PathVariable String username, MultipartFile file) throws IOException, ParseException {
         User user = (User) userDetailManager.loadUserByUsername(username);
         if (user.getProfilePicture() == null) {
             Picture picture = new Picture(file.getBytes(), user.getUsername(), "profile", file.getOriginalFilename());
