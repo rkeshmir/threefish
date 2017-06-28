@@ -222,3 +222,16 @@ md-toast.b-error .md-toast-content {
 .no-scroll {
   overflow: hidden;
 }
+
+.image-radius {
+  border-radius: 4px;
+}
+
+.logo-container {
+  small {
+    position: relative;
+    top: -20%;
+    font-style: italic;
+    color: gray;
+  }
+}

@@ -20,9 +20,9 @@
                 sref: '.users'
             },
             {
-                name: 'Profile',
-                icon: 'person',
-                sref: '.profile'
+                name: 'Services',
+                icon: 'assignment_turned_in',
+                sref: '.services'
             },
             {
                 name: 'Table',

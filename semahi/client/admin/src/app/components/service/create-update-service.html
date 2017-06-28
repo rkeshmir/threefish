@@ -1,0 +1,93 @@
+<!-- TODO: Add validations -->
+<md-content md-theme="dark" class="md-padding" layout="row" layout-sm="column">
+    <md-input-container>
+        <label>Title</label>
+        <input ng-model="vm.service.title" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Seen Count</label>
+        <input ng-model="vm.service.seenCount" ng-disabled="true">
+    </md-input-container>
+    <md-input-container layout-margin="15">
+        <md-checkbox ng-model="vm.service.active" aria-label="Is active?">
+            Active
+        </md-checkbox>
+    </md-input-container>
+
+
+    <div layout="row" layout-align="end center" flex-gt-sm="70" ng-show="vm.method === 'update'">
+        <span>
+            <img class="image-radius c-pointer" ng-click="vm.pictureDialog($event,'updateMainPic')" height="100"
+                 ng-src="{{vm.service.mainPic ? vm.host + vm.service.mainPic.url + '?data=' + vm.tmpDate : '../../assets/images/image-icon.jpg'}}">
+            <md-tooltip>Update Main Picture</md-tooltip>
+        </span>
+    </div>
+</md-content>
+<md-content class="md-padding">
+    <md-input-container flex>
+        <label>Description</label>
+        <textarea ng-model="vm.service.description" columns="6"></textarea>
+    </md-input-container>
+    <md-input-container flex>
+        <label>Shoert Description</label>
+        <textarea ng-model="vm.service.shortDescription" columns="3"
+                  md-maxlength="150"></textarea>
+    </md-input-container>
+</md-content>
+<md-content>
+    <div layout="row" layout-xs="column">
+        <div flex-sm="90" flex-xs="90" flex-offset-gt-sm="10" flex-offset-xs="5" flex="35" layout-margin="10">
+            <span class="logo-container">
+                <img ng-src="{{vm.service.logoOut ? vm.host + vm.service.logoOut.url +'?data='+vm.tmpDate : '../../assets/images/default-logo-icon.jpg'}}"
+                     class="img-circle">
+                <small> Default Logo (When nothing has happened) </small>
+                <md-tooltip>Update  this file via form below</md-tooltip>
+            </span>
+            <lf-ng-md-file-input lf-files="vm.logoOutFile" submit lf-on-submit-click="vm.updateLogoOut"
+                                 lf-api="vm.logoOutFileApi"></lf-ng-md-file-input>
+        </div>
+        <div flex-sm="90" flex-xs="90" flex-offset-gt-sm="10" flex-offset-xs="5" flex="35" layout-margin="10">
+            <span class="logo-container">
+                <img ng-src="{{vm.service.logoIn ? vm.host + vm.service.logoIn.url +'?data='+vm.tmpDate : '../../assets/images/in-logo-icon.jpg'}}"
+                     class="img-circle">
+                <small> The logo while mouse is in </small>
+                <md-tooltip>Update this  file via form below</md-tooltip>
+            </span>
+            <lf-ng-md-file-input lf-files="vm.logoInFile" submit lf-on-submit-click="vm.updateLogoIn"
+                                 lf-api="vm.logoInFileApi"></lf-ng-md-file-input>
+        </div>
+    </div>
+    <div layout="row" layout-xs="column">
+        <div flex-sm="90" flex-xs="90" flex-offset-gt-sm="10" flex-offset-xs="5" flex="35" layout-margin="10">
+            <span class="logo-container">
+                <img ng-src="{{vm.service.logoAnimatedIn ? vm.host + vm.service.logoAnimatedIn.url +'?data='+vm.tmpDate : '../../assets/images/hover-in-logo-icon.jpg'}}"
+                     class="img-circle">
+                <small> The gif displaying while mouse hovers in </small>
+                <md-tooltip>Update  this file via form below</md-tooltip>
+            </span>
+            <lf-ng-md-file-input lf-files="vm.logoAnimatedInFile" submit lf-on-submit-click="vm.updateLogoAnimatedIn"
+                                 lf-api="vm.logoAnimatedInFileApi"></lf-ng-md-file-input>
+        </div>
+        <div flex-sm="90" flex-xs="90" flex-offset-gt-sm="10" flex-offset-xs="5" flex="35" layout-margin="10">
+            <span class="logo-container">
+                <img ng-src="{{vm.service.logoAnimatedOut ? vm.host + vm.service.logoAnimatedOut.url +'?data='+vm.tmpDate : '../../assets/images/hover-out-logo-icon.jpg'}}"
+                     class="img-circle">
+                <small> The gif displaying while mouse goes out of the logo </small>
+                <md-tooltip>Update this  file via form below</md-tooltip>
+            </span>
+            <lf-ng-md-file-input lf-files="vm.logoAnimatedOutFile" submit lf-on-submit-click="vm.updateLogoAnimatedOut"
+                                 lf-api="vm.logoAnimatedOutFileApi"></lf-ng-md-file-input>
+        </div>
+    </div>
+</md-content>
+<md-content md-theme="grey" class="md-padding" layout="row" layout-sm="column">
+    <md-button class="md-accent md-raised" ng-click="vm.save()">
+        <i class="material-icons">check</i>
+        <md-tooltip><span ng-bind="vm.method === 'create' ? 'Create User' : 'Update User'"></span></md-tooltip>
+    </md-button>
+    <md-button class="md-warn md-raised" ng-click="vm.revert()">
+        <i class="material-icons">cancel</i>
+        <md-tooltip><span ng-bind="vm.method === 'create' ? 'Clear' : 'Revert'"></span></md-tooltip>
+    </md-button>
+</md-content>
+
