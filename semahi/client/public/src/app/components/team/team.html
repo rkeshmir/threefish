@@ -1,0 +1,350 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    ng-click="vm.toggleNav();$event.stopPropagation();"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">
+                <img src="img/logo-new.png" class="img-responsive">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class=" navbar-collapse" ng-show="mdMedia('(min-width: 767px)') || showNav"
+             id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">ورود <span class="sr-only">(current)</span></a></li>
+                <li><a ng-href="tel:{{vm.tel}}"><span>۰۲۱-۸۸۷۷۶۶۵۵</span>&nbsp;<i class="fa fa-phone"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="m-hidden">
+                    <a ng-click="vm.scroll('portfolio')">
+                        نمونه کارها
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('about')">
+                        درباره‌ی سه‌ماهی
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('services')">
+                        خدمات سه‌ماهی
+                    </a>
+                </li>
+
+                <li class="m-hidden">
+                    <a ng-click="vm.scroll('clients')">
+                        مشتریان
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('contact')">
+                        تماس با سه‌ماهی
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- Navigation -->
+
+<!--<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-round btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand">
+            <a href="#top" onclick=$("#menu-close").click();>
+                سه ماهی
+                <img src="img/logo.png" class="img-responsive">
+            </a>
+        </li>
+        <li>
+            <a href="#top" onclick=$("#menu-close").click();>خانه</a>
+        </li>
+        <li>
+            <a href="#about" onclick=$("#menu-close").click();>درباره‌ی سه‌ماهی</a>
+        </li>
+        <li>
+            <a href="#services" onclick=$("#menu-close").click();>خدمات سه‌ماهی</a>
+        </li>
+        <li>
+            <a href="#portfolio" onclick=$("#menu-close").click();>نمونه کارها</a>
+        </li>
+        <li>
+            <a href="#clients" onclick=$("#menu-close").click();>مشتریان</a>
+        </li>
+        <li>
+            <a href="#contact" onclick=$("#menu-close").click();>تماس با سه‌ماهی</a>
+        </li>
+    </ul>
+</nav>-->
+<section id="team" class="brands bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">
+                    تیم سه‌ماهی
+                </h2>
+
+                <h3 class="section-subheading text-muted">
+
+                </h3>
+            </div>
+        </div>
+        <div class="row m-b-1">
+
+            <div class=" col-xs-3 pull-right">
+                <img src="app/img/team/hedie-01.jpg" class="img-responsive team-member-pic" alt="aparat">
+            </div>
+            <div class=" col-xs-9 pull-right">
+                <h1>
+                    هدیه
+                    <br>
+                    <small>
+                        عنوان شغل
+                    </small>
+                </h1>
+                <p>
+                    برخی بر مصرف زیاد آب در بخش کشاورزی تاکید دارند و آن را عامل اصلی در بحران می دانند و برخی اقلیم خشک
+                    و کم باران و برخی هم رشد جمعیت و مهاجرت را به عنوان عوامل اصلی این بحران نام می برند.
+                </p>
+            </div>
+        </div>
+        <div class="row m-b-1">
+            <div class=" col-xs-3 pull-right">
+                <img src="app/img/team/sina.jpg" class="img-responsive team-member-pic" alt="aparat">
+            </div>
+            <div class=" col-xs-9 pull-right">
+                <h1>
+                    سینا
+                    <br>
+                    <small>
+                        عنوان شغل
+                    </small>
+                </h1>
+                <p>
+                    برخی بر مصرف زیاد آب در بخش کشاورزی تاکید دارند و آن را عامل اصلی در بحران می دانند و برخی اقلیم خشک
+                    و کم باران و برخی هم رشد جمعیت و مهاجرت را به عنوان عوامل اصلی این بحران نام می برند.
+                </p>
+            </div>
+        </div>
+        <div class="row m-b-1">
+            <div class=" col-xs-3 pull-right">
+                <img src="app/img/team/Fahima webdesign-01.jpg" class="img-responsive team-member-pic" alt="aparat">
+            </div>
+            <div class=" col-xs-9 pull-right">
+                <h1>
+                    فهیمه
+                    <br>
+                    <small>
+                        عنوان شغل
+                    </small>
+                </h1>
+                <p>
+                    برخی بر مصرف زیاد آب در بخش کشاورزی تاکید دارند و آن را عامل اصلی در بحران می دانند و برخی اقلیم خشک
+                    و کم باران و برخی هم رشد جمعیت و مهاجرت را به عنوان عوامل اصلی این بحران نام می برند.
+                </p>
+            </div>
+        </div>
+        <div class="row m-b-1">
+            <div class=" col-xs-3 pull-right">
+                <img src="app/img/team/ali webdesign-01.jpg" class="img-responsive team-member-pic" alt="aparat">
+            </div>
+            <div class=" col-xs-9 pull-right">
+                <h1>
+                    علی
+                    <br>
+                    <small>
+                        عنوان شغل
+                    </small>
+                </h1>
+                <p>
+                    برخی بر مصرف زیاد آب در بخش کشاورزی تاکید دارند و آن را عامل اصلی در بحران می دانند و برخی اقلیم خشک
+                    و کم باران و برخی هم رشد جمعیت و مهاجرت را به عنوان عوامل اصلی این بحران نام می برند.
+                </p>
+            </div>
+        </div>
+        <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <div class="team-member">
+                <a href="http://www.aparat.com/#">
+                    <img src="img/team/fahima.jpg" class="img-responsive img-circle" alt="aparat">
+                </a>
+                <h4>فهیما فرحی</h4>
+                <p>جایگاه در تیم</p>
+                <ul class="list-inline social-buttons">
+                    <li><a href="http://www.twitter.com/aparatcom"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="http://www.facebook.com/aparat.page"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="http://www.instagram.com/aparat.page"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <div class="team-member">
+                <a href="https://www.digikala.com/">
+                    <img src="img/team/sina.jpg" class="img-responsive img-circle" alt="digikala">
+                </a>
+                <h4>سینا حسینی</h4>
+                <p>جایگاه در تیم</p>
+                <ul class="list-inline social-buttons">
+                    <li><a href="https://www.twitter.com/Digikalacom"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/DigikalaPortal"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/digikalacom"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <div class="team-member">
+                <a href="https://www.reyhoon.com/">
+                    <img src="img/team/ali.jpg" class="img-responsive img-circle" alt="reyhoon">
+                </a>
+                <h4>علی </h4>
+                <p>از خوبای تیم</p>
+                <ul class="list-inline social-buttons">
+                    <li><a href="http://www.twitter.com/reyhoonia"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/reyhoonia"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="http://instagram.com/reyhoonia"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+            <div class="team-member">
+                <a href="https://www.reyhoon.com/">
+                    <img src="img/team/alir.jpg" class="img-responsive img-circle" alt="reyhoon">
+                </a>
+                <h4>نام فرد </h4>
+                <p>جایگاه در تیم</p>
+                <ul class="list-inline social-buttons">
+                    <li><a href="http://www.twitter.com/reyhoonia"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/reyhoonia"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li><a href="http://instagram.com/reyhoonia"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+    </div>
+    <!--<div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
+                laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+        </div>
+    </div>-->
+    </div>
+</section>
+<!--footer start from here-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft pull-right">
+                <div class="logofooter"> سه‌ماهی</div>
+                <p>گروه سه‌ماهی، مجموعه از افراد جوان و باانگیزه است که با تلفیق توانایی‌های فنی و هنری خود به شما
+                    در تولید محتوای مناسب کسب و کار شما کمک می‌کنند. سه‌ماهی با در نظر گرفتن شرایط جدید فضای رسانه
+                    همواره بهترین محتوا را برای کانال‌های مناسب تبلیغات شما اعم از شبکه‌های اجتماعی و سایر فضاهای
+                    مجازی فراهم می‌کند.</p>
+
+                <p><i class="fa fa-map-pin"></i>تهران،‌ میدان صنعت،‌اول بلوار فرحزادی، خیابان سیف، کوچه دوم،‌ پلاک
+                    ۶، طبقه‌ی دوم</p>
+
+                <p><i class="fa fa-phone"></i> شماره تماس: ۸۸۷۷۴۴۳۳ (۰۲۱) </p>
+
+                <p><i class="fa fa-envelope"></i> پست الکترونیکی: info@3mahi.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">خدمات</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">ساخت مستند</a></li>
+                    <li><a href="#">محتوای شبکه های اجتماعی</a></li>
+                    <li><a href="#">تیزر تبلیغاتی</a></li>
+                    <li><a href="#">عکاسی</a></li>
+                    <li><a href="#">عکاسی ۳۶۰ درجه- تور مجازی </a></li>
+                    <li><a href="#">برنامه سازی</a></li>
+                    <li><a href="#">برند سازی تصویری</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">لینک‌های مهم</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">تعرفه</a></li>
+                    <li><a href="#">نمونه کار</a></li>
+                    <li><a href="#">درباره سه ماهی</a></li>
+                    <li><a href="#">وبلاگ</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                    <li><a href="#">عضویت در خبرنامه</a></li>
+                </ul>
+            </div>
+            <!--<div class="col-md-3 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">آخرین یادداشت‌ها</h6>
+                <div class="post">
+                    <p>همکاری با اقامت ۲۴ <span>۳ آذر ۹۵</span></p>
+                    <p>مستندهای سه‌ماهی رکورد بازدید مستندهای جشنواره وب را شکست <span>۲ اسفند ۹۶</span></p>
+                    <p>عنوان پست دیگر <span>۱ اردیبهشت ۹۶</span></p>
+                </div>
+            </div>-->
+            <div class="col-md-3 col-sm-6 paddingtop-bottom pull-right">
+                <div class="fb-page" data-href="https://www.facebook.com/facebook"
+                     data-tabs="timeline"
+                     data-height="300" data-small-header="false" style="margin-bottom:15px;"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote class="social" cite="http://www.aparat.com/threefish">
+                            <a href="http://www.aparat.com/threefish" target="_blank">
+                                <img class="social-logo" width="19" src="img/logos/aparat_logo_alt.png">
+                                <span class="social-title">آپارات</span>
+                            </a>
+                        </blockquote>
+                        <blockquote class="social" cite="http://www.telegram.me/threefish" target="_blank">
+                            <a href="http://www.telegram.me/threefish">
+                                <i class="fa fa-telegram social-logo"></i>
+                                <span class="social-title">تلگرام</span>
+                            </a>
+                        </blockquote>
+                        <blockquote class="social" cite="https://www.instagram.com/3fishgroup/" target="_blank">
+                            <a href="http://www.aparat.com/threefish">
+                                <i class="fa fa-instagram social-logo"></i>
+                                <span class="social-title">اینستاگرام</span>
+                            </a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-sm-6">
+            <p>© ۱۳۹۶ - تمام حقوق این سایت برای گروه سه‌ماهی محفوظ است.</p>
+        </div>
+        <div class="col-sm-6">
+            <ul class="bottom_ul">
+                <li><a href="#">سه ماهی</a></li>
+                <li><a href="#">درباره‌ی ما</a></li>
+                <li><a href="#">وبلاگ</a></li>
+                <li><a href="#">سوالات متداول</a></li>
+                <li><a href="#">تماس با ما</a></li>
+                <li><a href="#">نقشه‌ی سایت</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

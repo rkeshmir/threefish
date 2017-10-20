@@ -1,41 +1,1271 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h3 class="page-header"
-                data-translate="APP.MODULES.HOME.TITLE"></h3>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    ng-click="vm.toggleNav();$event.stopPropagation();"
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">
+                <img src="img/logo-new.png" class="img-responsive">
+            </a>
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
-    <div class="row">
 
-        <samat-stats data-goto="root.user"
-                     data-color="primary"
-                     data-comments="APP.MODULES.USER.COUNT"
-                     data-title="APP.SHARE.VIEW"
-                     data-number="{{vm.dashboard.users}}"
-                     data-icon="users">
-        </samat-stats>
-        <samat-stats data-goto="root.application"
-                     data-color="green"
-                     data-comments="APP.MODULES.APPLICATION.COUNT"
-                     data-title="APP.SHARE.VIEW"
-                     data-number="{{vm.dashboard.applications}}"
-                     data-icon="android">
-        </samat-stats>
-        <samat-stats data-goto="root.category"
-                     data-color="yellow"
-                     data-comments="APP.MODULES.CATEGORY.COUNT"
-                     data-title="APP.SHARE.VIEW"
-                     data-number="{{vm.dashboard.categories}}"
-                     data-icon="tags">
-        </samat-stats>
-        <samat-stats data-goto="root.company"
-                     data-color="red"
-                     data-comments="APP.MODULES.COMPANY.COUNT"
-                     data-title="APP.SHARE.VIEW"
-                     data-number="{{vm.dashboard.companies}}"
-                     data-icon="bank">
-        </samat-stats>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class=" navbar-collapse" ng-show="mdMedia('(min-width: 767px)') || showNav"
+             id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">ورود <span class="sr-only">(current)</span></a></li>
+                <li><a ng-href="tel:{{vm.tel}}"><span>۰۲۱-۸۸۷۷۶۶۵۵</span>&nbsp;<i class="fa fa-phone"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="m-hidden">
+                    <a ng-click="vm.scroll('portfolio')">
+                        نمونه کارها
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('about')">
+                        درباره‌ی سه‌ماهی
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('services')">
+                        خدمات سه‌ماهی
+                    </a>
+                </li>
+
+                <li class="m-hidden">
+                    <a ng-click="vm.scroll('clients')">
+                        مشتریان
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.scroll('contact')">
+                        تماس با سه‌ماهی
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- Navigation -->
+
+<!--<nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-light btn-round btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand">
+            <a href="#top" onclick=$("#menu-close").click();>
+                سه ماهی
+                <img src="img/logo.png" class="img-responsive">
+            </a>
+        </li>
+        <li>
+            <a href="#top" onclick=$("#menu-close").click();>خانه</a>
+        </li>
+        <li>
+            <a href="#about" onclick=$("#menu-close").click();>درباره‌ی سه‌ماهی</a>
+        </li>
+        <li>
+            <a href="#services" onclick=$("#menu-close").click();>خدمات سه‌ماهی</a>
+        </li>
+        <li>
+            <a href="#portfolio" onclick=$("#menu-close").click();>نمونه کارها</a>
+        </li>
+        <li>
+            <a href="#clients" onclick=$("#menu-close").click();>مشتریان</a>
+        </li>
+        <li>
+            <a href="#contact" onclick=$("#menu-close").click();>تماس با سه‌ماهی</a>
+        </li>
+    </ul>
+</nav>-->
+
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>آنطور كه هستید دیده شوید</h1>
+
+        <h3>تولید محتوای مستند برای ساخت هویت كسب و كار شما</h3>
+        <br>
+        <!--<a href="#about" class="btn btn-dark btn-lg">
+            <i class="fa fa-caret-down"></i>
+        </a>-->
+        <a ng-click="vm.scroll('about')" class="btn btn-circle page-scroll">
+            <i class="fa fa-angle-double-down animated"></i>
+        </a>
+    </div>
+</header>
+
+<!-- About -->
+<section id="about" class="about bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <h2>تبلیغات غیرمستقیم/مستند</h2>
+
+                <p class="lead">
+                    <b>تبلیغاتی که در ذهن مخاطب از برند شما خاطره می سازد</b>
+                </p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+<!-- Services -->
+<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+<section id="services" class="services bg-primary">
+    <div class="container">
+        <div class="row text-center sm-hidden">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>خدمات سه‌ماهی</h2>
+                <hr class="small">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" ng-repeat="service in vm.services">
+                        <div class="service-item">
+                            <span class="fa-stack fa-4x" ng-mouseenter="vm.mouseIn(service)"
+                                  ng-mouseleave="vm.mouseOut(service)">
+                                <i class="fa fa-circle fa-stack-2x" ng-if="service.icon === 4"></i>
+                                <i class="fa {{service.awesomeIcon}} fa-stack-1x text-primary"
+                                   ng-if="service.icon === 4"></i>
+                                <img class="service-icon" ng-src="{{service.logoOut}}"
+                                     ng-show="service.icon === 0"></img>
+                                <img ng-attr-id="{{'icon-' + service.id + '-1'}}" class="service-icon"
+                                     ng-show="service.icon === 1"></img>
+                                <img class="service-icon" ng-src="{{service.logoIn}}"
+                                     ng-show="service.icon === 2"></img>
+                                <img ng-attr-id="{{'icon-' + service.id + '-2'}}" class="service-icon"
+                                     ng-show="service.icon === 3"></img>
+                            </span>
+                            <h4>
+                                <strong ng-bind="service.name">
+                                </strong>
+                            </h4>
+
+                            <p></p>
+                            <a class="btn btn-light btn-round " ng-click="vm.openServiceModal($index)">
+                                بیشتر ...
+                            </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-connectdevelop fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>
+                                    محتوای شبکه‌ی اجتماعی
+                                </strong>
+                            </h4>
+                            <p>
+                            </p>
+                            <a href="#services" data-toggle="modal" data-target="#socialModal"
+                               class="btn btn-light btn-round ">
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-product-hunt fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>
+
+                                </strong>
+                            </h4>
+                            <p>
+                            </p>
+                            <a href="#services" data-toggle="modal" data-target="#programModal"
+                               class="btn btn-light btn-round ">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-gears fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>
+
+                                </strong>
+                            </h4>
+                            <p>
+                            </p>
+                            <a href="#services" data-toggle="modal" data-target="#teaserModal"
+                               class="btn btn-light btn-round ">
+                                <i class="fa fa-info"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                        <div class="service-item">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>
+                                </strong>
+                            </h4>
+                            <p></p>
+                            <a href="#services" data-toggle="modal" data-target="#documentaryModal"
+                               class="btn btn-light btn-round ">
+
+                            </a>
+                        </div>
+                    </div>-->
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+        <div class="row lg-xl-hidden accordion">
+            <div class="col-sm-3 col-md-3">
+                <uib-accordion close-others="true">
+                    <uib-accordion-group>
+                        <uib-accordion-heading>
+                            <h4 class="panel-title">
+                                <a>
+                                    <i class="fa fa-star"></i>
+                                    برندسازی
+                                </a>
+                            </h4>
+                        </uib-accordion-heading>
+                        به زودی ...
+                    </uib-accordion-group>
+                    <uib-accordion-group>
+                        <uib-accordion-heading>
+                            <h4 class="panel-title">
+                                <a>
+                                    <i class="fa fa-star"></i>
+                                    محتوای شبکه‌ی اجتماعی
+                                </a>
+                            </h4>
+                        </uib-accordion-heading>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#campaign-a" aria-controls="campaign-a" role="tab"
+                                           data-toggle="tab">
+                                            کمپین A
+                                        </a></li>
+                                    <li role="presentation">
+                                        <a href="#campaign-b" aria-controls="campaign-b" role="tab"
+                                           data-toggle="tab">
+                                            کمپین B
+                                        </a></li>
+                                    <li role="presentation">
+                                        <a href="#campaign-c" aria-controls="campaign-c" role="tab"
+                                           data-toggle="tab">
+                                            کمپین C
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#campaign-d" aria-controls="campaign-d" role="tab"
+                                           data-toggle="tab">
+                                            کمپین D
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="campaign-a-t">
+                                        <div class="list-group">
+                                            <a class="list-group-item">
+                                                <b>
+                                                    هدف:
+                                                </b>
+                                                <ul>
+                                                    <li>تبلیغات فشرده برای بیشتر کردن سهم بازار شما</li>
+                                                    <li>معرفی محصول جدید</li>
+                                                    <li>رسیدن به هدف مشخص در فروش</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    محتوای پست‌های روزانه:
+                                                </b><br>
+                                                <i>
+                                                    هر روز انتشار سه پست، به مدت یک ماه، بر اساس استراتژی
+                                                    شبکه‌های اجتماعی کسب و کار شما
+                                                </i><br>
+                                                <span>
+                                    ساختار ۹۰ پست به مدت یک ماه:
+                                </span><br>
+                                                <ul>
+                                                    <li>۱۲ فیلم</li>
+                                                    <li>۲۶ عکس</li>
+                                                    <li>۲۶ متن</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    تیزر
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        شروع هر هفته با یک تیزر
+                                                    </li>
+                                                    <li>
+                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
+                                                    </li>
+                                                    <li>
+                                                        مدت زمان تولید تیزرها حداکثر دو روز
+                                                    </li>
+                                                    <li>
+                                                        خروجی نهایی حداکثر یک دقیقه
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    تعداد نمایش
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        اولین روز از هفته‌ی دوم کمپین
+                                                    </li>
+                                                    <li>
+                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="campaign-b-t">
+                                        <div class="list-group">
+                                            <a class="list-group-item">
+                                                <b>
+                                                    هدف:
+                                                </b>
+                                                <ul>
+                                                    <li>شروع برندسازی در شبکه‌ی اجتماعی</li>
+                                                    <li>توسعه‌ی سهم بازار</li>
+                                                    <li>افزایش فالوور</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    محتوای پست‌های روزانه:
+                                                </b><br>
+                                                <i>
+                                                    هر روز انتشار دو پست، به مدت سه ماه، بر اساس استراتژی
+                                                    شبکه‌های اجتماعی کسب و کار شما
+                                                </i><br>
+                                                <span>
+                                    ساختار ۱۸۰ پست به مدت یک ماه:
+                                </span><br>
+                                                <ul>
+                                                    <li>۲۴ فیلم</li>
+                                                    <li>۵۲ عکس</li>
+                                                    <li>۵۲ متن</li>
+                                                    <li>۵۲ موشن‌گرافیک/اینفوگرافیک</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>تیزر:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        ساخت دو تیزر
+                                                    </li>
+                                                    <li>
+                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
+                                                    </li>
+                                                    <li>
+                                                        مدت زمان تولید تیزرها حداکثر دو روز
+                                                    </li>
+                                                    <li>
+                                                        خروجی نهایی حداکثر یک دقیقه
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    تعداد نمایش:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        یک تیزر در اولین روز هفته‌ی دوم و دیگری در اولین روز
+                                                        از هفته‌ی هفتم کمپین
+                                                    </li>
+                                                    <li>
+                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
+                                                    </li>
+                                                    <li>
+                                                        گزینه‌ی نمایش فقط برای تیز
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="campaign-c-t">
+                                        <div class="list-group">
+                                            <a class="list-group-item">
+                                                <b>
+                                                    هدف:
+                                                </b>
+                                                <ul>
+                                                    <li>تثبیت برند در شبکه‌ی اجتماعی</li>
+                                                    <li>توسعه‌ی تدریجی سهم بازار</li>
+                                                    <li>افزایش فالوور</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    محتوای پست‌های روزانه:
+                                                </b><br>
+                                                <i>
+                                                    هر روز انتشار دو پست، به مدت شش ماه، بر اساس استراتژی
+                                                    شبکه‌های اجتماعی کسب و کار شما
+                                                </i><br>
+                                                <span>
+                                    ساختار ۳۶۰ پست به مدت سه ماه:
+                                </span><br>
+                                                <ul>
+                                                    <li>۴۸ فیلم</li>
+                                                    <li>۱۰۴ عکس</li>
+                                                    <li>۱۰۴ متن</li>
+                                                    <li>۱۰۴ موشن‌گرافیک/اینفوگرافیک</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>تیزر:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        ساخت دو تیزر
+                                                    </li>
+                                                    <li>
+                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
+                                                    </li>
+                                                    <li>
+                                                        مدت زمان تولید تیزرها حداکثر دو روز
+                                                    </li>
+                                                    <li>
+                                                        خروجی نهایی حداکثر یک دقیقه
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    تعداد نمایش:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        هر ماه یک تیزر
+                                                    </li>
+                                                    <li>
+                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
+                                                    </li>
+                                                    <li>
+                                                        گزینه‌ی نمایش فقط برای تیز
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="campaign-d-t">
+                                        <div class="list-group">
+                                            <a class="list-group-item">
+                                                <b>
+                                                    هدف:
+                                                </b>
+                                                <ul>
+                                                    <li>رونمایی از برند در شبکه‌های اجتماعی</li>
+                                                    <li>آزمایش شبکه‌های اجتماعی و آشنایی با رفتار
+                                                        مصرف‌کننده
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    محتوای پست‌های روزانه:
+                                                </b><br>
+                                                <i>
+                                                    هر روز انتشار یک پست، به مدت یک ماه، بر اساس استراتژی
+                                                    شبکه‌های اجتماعی کسب و کار شما
+                                                </i><br>
+                                                <span>
+                                    ساختار ۳۰ پست به مدت یک ماه:
+                                </span><br>
+                                                <ul>
+                                                    <li>۴ فیلم</li>
+                                                    <li>۹ عکس</li>
+                                                    <li>۹ متن</li>
+                                                    <li>۸ موشن‌گرافیک/اینفوگرافیک</li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>تیزر:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        ساخت یک تیزر
+                                                    </li>
+                                                    <li>
+                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
+                                                    </li>
+                                                    <li>
+                                                        مدت زمان تولید تیزرها حداکثر دو روز
+                                                    </li>
+                                                    <li>
+                                                        خروجی نهایی حداکثر یک دقیقه
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                            <a class="list-group-item">
+                                                <b>
+                                                    تعداد نمایش:
+                                                </b>
+                                                <ul>
+                                                    <li>
+                                                        یک تیزر در اولین روز از هفته‌ی دوم
+                                                    </li>
+                                                    <li>
+                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
+                                                    </li>
+                                                    <li>
+                                                        گزینه‌ی نمایش فقط برای تیز
+                                                    </li>
+                                                </ul>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941881702738219-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/5DfRk?data[rnddiv]=14941881702738219&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group>
+                        <uib-accordion-heading>
+                            <h4 class="panel-title">
+                                <a>
+                                    <i class="fa fa-star"></i>
+                                    برنامه‌سازی
+                                </a>
+                            </h4>
+                        </uib-accordion-heading>
+                        به زودی ...
+                    </uib-accordion-group>
+                    <uib-accordion-group>
+                        <uib-accordion-heading>
+                            <h4 class="panel-title">
+                                <a>
+                                    <i class="fa fa-star"></i>
+                                    مستندسازی
+                                </a>
+                            </h4>
+                        </uib-accordion-heading>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="list-group">
+                                    <a class="list-group-item active">
+                                        انواع مستند
+                                    </a>
+                                    <a class="list-group-item">
+                                        علمی
+                                    </a>
+                                    <a class="list-group-item">صنعتی</a>
+                                    <a class="list-group-item">پروژه</a>
+                                    <a class="list-group-item">گردشگری</a>
+                                    <a class="list-group-item">کارگاه</a>
+                                    <a class="list-group-item">جشنواره</a>
+                                    <a class="list-group-item">رویداد</a>
+                                    <a class="list-group-item">رونمایی</a>
+                                    <a class="list-group-item">بازگشایی</a>
+                                    <a class="list-group-item">همایش</a>
+                                    <a class="list-group-item">همایش</a>
+                                    <a class="list-group-item">نمایشگاه</a>
+                                    <a class="list-group-item">کنگره</a>
+                                    <a class="list-group-item">نشست خبری</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941897085816872">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/LrE23?data[rnddiv]=14941897085816872&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941897629444250-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/7pt4H?data[rnddiv]=14941897629444250&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941897833736646-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/0PQnV?data[rnddiv]=14941897833736646&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941898167245419-id2">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/letmN?data[rnddiv]=14941898167245419&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941898475887016-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/oncZf?data[rnddiv]=14941898475887016&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941898835426226-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/Bpdm5?data[rnddiv]=14941898835426226&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941899129230635-id2">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/GTt6g?data[rnddiv]=14941899129230635&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941899465249022-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/3ro8S?data[rnddiv]=14941899465249022&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                            <div class="col-md-6 video-container">
+                                <div id="14941905925296566-id">
+                                    <script type="text/JavaScript"
+                                            src="https://www.aparat.com/embed/L8rH2?data[rnddiv]=14941905925296566&data[responsive]=yes"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-accordion-group>
+                    <uib-accordion-group>
+                        <uib-accordion-heading>
+                            <h4 class="panel-title">
+                                <a>
+                                    <i class="fa fa-star"></i>
+                                    تیزر تبلیغاتی
+                                </a>
+                            </h4>
+                        </uib-accordion-heading>
+                        به زودی ...
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+<!-- Callout -->
+<!--<aside class="callout">
+    <div class="text-vertical-center">
+        <h1>Vertically Centered Text</h1>
+    </div>
+</aside>-->
+
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <h2>پروژه‌های اخیر سه‌ماهی</h2>
+                <hr class="small">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="portfolio-item">
+                            <!--<a href="#">
+                                <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
+                            </a>-->
+                            <div id="14931649341658171">
+                                <script type="text/JavaScript"
+                                        src="https://www.aparat.com/embed/0PQnV?data[rnddiv]=14931649341658171&data[responsive]=yes"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="portfolio-item">
+                            <div id="14931650611511756">
+                                <script type="text/JavaScript"
+                                        src="https://www.aparat.com/embed/tU2ql?data[rnddiv]=14931650611511756&data[responsive]=yes"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="portfolio-item">
+                            <div id="14931650934437796">
+                                <script type="text/JavaScript"
+                                        src="https://www.aparat.com/embed/lMQq6?data[rnddiv]=14931650934437796&data[responsive]=yes"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="portfolio-item">
+                            <div id="1493165128873933">
+                                <script type="text/JavaScript"
+                                        src="https://www.aparat.com/embed/y24FR?data[rnddiv]=1493165128873933&data[responsive]=yes"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+                <a href="#" class="btn btn-dark  btn-round">دیگر پروژه‌ها</a>
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+<!--<section id="partners" class="features bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h2>همکاران</h2>
+                    <p>
+                        همکاران و شرکت‌های تجاری که در ارائه‌ی سرویس‌های بهتر به ما کمک می‌کنند
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="fa fa-500px "></i>
+                                <h3>
+                                    ۵۰۰ پیکسل
+                                </h3>
+                                <p>
+                                    وب‌سایت اشتراک‌گذاری تصویر و جامعهٔ آنلاین که در ۳۱ اکتبر ۲۰۰۹ ایجاد شد
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="fa fa-firefox"></i>
+                                <h3>فایرفاکس</h3>
+                                <p>
+                                    مرورگر وب آزاد و متن-باز برگرفته از مجموعه نرم‌افزار اینترنت موزیلا که توسط
+                                    بنیاد موزیلا توسعه و پشتیبانی می‌شود
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="fa fa-quora"></i>
+                                <h3>کورا</h3>
+                                <p>
+                                    وب‌گاهی برای پرسش و پاسخ که در آن کاربران می‌توانند سؤال بپرسند و پاسخ دهند و
+                                    ویراستاری کنند
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="feature-item">
+                                <i class="fa fa-opera"></i>
+                                <h3>اپرا</h3>
+                                <p>
+                                    مرورگر وب رایگان و متن‌بسته با دارا بودن حدود دو درصد کاربران اینترنت است که
+                                    شرکت نرم‌افزاری اپرا آن را توسعه داده‌است
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+
+
+<!-- Team -->
+<section id="team" class="brands bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">
+                    تیم سه‌ماهی
+                </h2>
+
+                <h3 class="section-subheading text-muted">
+
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-6 col-xs-12 pull-right">
+                <img src="app/img/TeamWork.jpg" class="img-responsive" alt="aparat">
+            </div>
+            <div class="col-sm-6 col-xs-12 pull-right">
+                <p>
+                    برخی بر مصرف زیاد آب در بخش کشاورزی تاکید دارند و آن را عامل اصلی در بحران می دانند و برخی اقلیم خشک
+                    و کم باران و برخی هم رشد جمعیت و مهاجرت را به عنوان عوامل اصلی این بحران نام می برند.
+                </p>
+
+                <p>
+                    عصر ایران در گفت و گو با دکتر خدیجه کاترین رضوی( از فعالان محیط زیست)، موضوع بحران آب و برخی مسائل
+                    مرتبط با آن را بررسی کرده است.
+                    خدیجه کاترین رضوی متولد 1323 است و مادرش فرانسوی است. پدرش یکی از اولین دانشجویان ایرانی بوده که
+                    برای تحصیل در رشته پزشکی به فرانسه اعزام شده و با زنی فرانسوی که مسلمان شده بود ازدواج کرد.
+                </p>
+
+                <p>
+                    بنا به گفته خدیجه کاترین رضوی، حکایت اسم دو بخشی او به این صورت است که در روز مبعث پیامبر اسلام به
+                    دنیا آمده و پدرش نام خدیجه را برای فرزندش انتخاب کرده است و مادر که فرانسوی بوده نام کاترین را.
+                    <a ui-sref="root.team" class="btn btn-light btn-round">
+                        مشاهده
+                    </a>
+                </p>
+            </div>
+            <!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="team-member">
+                    <a href="http://www.aparat.com/#">
+                        <img src="img/team/fahima.jpg" class="img-responsive img-circle" alt="aparat">
+                    </a>
+                    <h4>فهیما فرحی</h4>
+                    <p>جایگاه در تیم</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="http://www.twitter.com/aparatcom"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="http://www.facebook.com/aparat.page"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="http://www.instagram.com/aparat.page"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="team-member">
+                    <a href="https://www.digikala.com/">
+                        <img src="img/team/sina.jpg" class="img-responsive img-circle" alt="digikala">
+                    </a>
+                    <h4>سینا حسینی</h4>
+                    <p>جایگاه در تیم</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://www.twitter.com/Digikalacom"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/DigikalaPortal"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="https://www.instagram.com/digikalacom"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="team-member">
+                    <a href="https://www.reyhoon.com/">
+                        <img src="img/team/ali.jpg" class="img-responsive img-circle" alt="reyhoon">
+                    </a>
+                    <h4>علی </h4>
+                    <p>از خوبای تیم</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="http://www.twitter.com/reyhoonia"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/reyhoonia"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="http://instagram.com/reyhoonia"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="team-member">
+                    <a href="https://www.reyhoon.com/">
+                        <img src="img/team/alir.jpg" class="img-responsive img-circle" alt="reyhoon">
+                    </a>
+                    <h4>نام فرد </h4>
+                    <p>جایگاه در تیم</p>
+                    <ul class="list-inline social-buttons">
+                        <li><a href="http://www.twitter.com/reyhoonia"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="https://www.facebook.com/reyhoonia"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li><a href="http://instagram.com/reyhoonia"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+        </div>
+        <!--<div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
+                    laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            </div>
+        </div>-->
+    </div>
+</section>
+
+<!-- Clients Aside -->
+<aside id="clients" class="clients bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">
+                    مورد اعتماد برندهای بزرگ
+                </h2>
+
+                <h3 class="section-subheading">
+                    برندهای شناخته‌شده‌ای به ما اعتماد کرده‌اند، از جمله:
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://www.iacap.ir/fa/">
+                    <img src="img/customers/iranian-academy-of-child&adolescent-psychology.gif" width="110"
+                         class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://black-light-land.ir/">
+                    <img src="img/customers/black-light-land.jpg" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="https://www.instagram.com/kandu_theater/">
+                    <img src="img/customers/kandoo-theatr.jpg" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="https://www.tiwall.com/">
+                    <img src="img/customers/tiwall.png" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://www.iwmf.ir/">
+                    <img src="img/customers/iran-web-festival.png" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://www.nano.ir/">
+                    <img src="img/customers/nano-iran.jpg" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="https://realitygame.me/1/">
+                    <img src="img/customers/farbod_engare.jpg" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://tesc.ir/">
+                    <img src="img/customers/export-corridor.jpg" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://www.ibtc.ir/">
+                    <img src="img/customers/commerce-school.png" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="https://ictu.qiau.ac.ir/">
+                    <img src="img/customers/qazvin-roshd-center.png" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="https://www.isti.ir/">
+                    <img src="img/customers/moavenat-elmi-fanavari.jpg" width="110"
+                         class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://www.aparat.com/mehrtan/%D9%85%D9%87%D8%B1%D8%AA%D9%86">
+                    <img src="img/customers/mehrtan.jpg" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <!--<div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="http://11iran.ir/">
+                    <img src="img/brands/kalleh.png" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>-->
+        </div>
+    </div>
+</aside>
+
+<!-- Blog -->
+<section id="blog" class="blog bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">
+                    وبلاگ
+                </h2>
+
+                <h3 class="section-subheading">
+                    یادداشت‌ها و مطالب سه‌ماهی
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-xs-12 portfolio-item" ng-repeat="blog in vm.blogs">
+                <a href="#">
+                    <img class="img-responsive img-blog" ng-src="{{blog.image}}" alt="">
+                </a>
+
+                <h3>
+                    <a href="#" ng-bind="blog.title"></a>
+                </h3>
+
+                <p>
+                    {{blog.lead}}
+                    <a href="#"> ادامه‌ی مطلب ... </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Map -->
+<section id="contact" class="map">
+    <a target="_blank" class="map-link" ng-if="false"
+       href="https://www.google.com/maps/place/35%C2%B045'13.8%22N+51%C2%B021'57.3%22E/@35.7534498,51.3655143,17z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.753846!4d51.365922">
+        <span class="map-container well"></span>
+    </a>
+
+    <div class="col-sm-6 sm-hidden">
+        <ng-map id="map" center="[35.753846, 51.365879]" default-style="false">
+            <marker position="35.753846, 51.365879" title="سه‌ماهی"
+                    optimized="treu"
+                    icon="{
+                        url:'../assets/marker.png',
+                        scaledSize:[50,50]
+                      }"
+            >
+
+            </marker>
+        </ng-map>
+    </div>
+
+    <div class="col-sm-6" style="padding: 20px; background-color: #e8e8e8; height: 100%">
+        <form action="#" class="form-horizontal">
+            <legend>همین امروز با ما تماس بگیرید!</legend>
+            <div class="form-group">
+                <div class="col-lg-10 col-md-8 inputGroupContainer pull-right">
+                    <div class="input-group">
+                        <input name="first_name" placeholder="نام" class="form-control" type="text">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-md-8 inputGroupContainer pull-right">
+                    <div class="input-group">
+                        <input name="email" placeholder="ایمیل" class="form-control" type="email">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-md-8 inputGroupContainer pull-right">
+                    <div class="input-group">
+                        <input name="phone" placeholder="شماره تماس" class="form-control" type="text">
+                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-md-8 inputGroupContainer pull-right">
+                    <div class="input-group">
+                        <textarea class="form-control" name="comment" placeholder="پیام شما به سه‌ماهی"></textarea>
+                        <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-md-8 pull-right">
+                    <button type="submit" class="btn btn-default pull-left">ارسال &nbsp;<span
+                            class="fa fa-send"></span></button>
+                </div>
+            </div>
+        </form>
+
+        <div class="row map-btn">
+            <div class="col-xs-12">
+                <a target="_blank" class="btn btn-default col-xs-12"
+                   href="https://www.google.com/maps/place/35%C2%B045'13.8%22N+51%C2%B021'57.3%22E/@35.7534498,51.3655143,17z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.753846!4d51.365922">
+                    <i class="fa fa-map-marker"></i>
+                    سه‌ماهی را روی نقشه ببینید!
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- <footer class="bg-light-gray">
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-10 col-lg-offset-1 text-center">
+                 <h4><strong>سه ماهی</strong>
+                 </h4>
+                 <p>
+                     میدان صنعت،‌اول بلوار فرحزادی،
+                     <br>
+                     خیابان سیف، کوچه دوم،‌ پلاک ۶، طبقه‌ی دوم
+                 </p>
+                 <p class="list-unstyled">
+                     <span><i class="fa fa-phone fa-fw"></i> (۰۲۱) ۸۸۸۸-۱۰۱۰</span>
+                     <br>
+                     <span><i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:name@example.com">info@3mahi.com</a>
+                     </span>
+                 </p>
+                 <br>
+                 <p class="list-inline">
+                     <span>
+                         <a href="http://www.telegram.me/threefish" target="_blank"><i class="fa fa-telegram fa-fw fa-3x"></i></a>
+                     </span>
+                     <span>
+                         <a href="http://www.aparat.com/threefish" target="_blank"><img src="img/logos/aparat_logo_alt_blue.png"></a>
+                     </span>
+                     <span>
+                         <a href="https://www.instagram.com/3fishgroup/" target="_blank"><i class="fa fa-instagram fa-fw fa-3x"></i></a>
+                     </span>
+                 </p>
+                 <hr class="small">
+                 <p class="text-muted">Copyright &copy; 3mahi 2017</p>
+             </div>
+         </div>
+     </div>
+     <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
+ </footer>-->
+
+<!--footer start from here-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft pull-right">
+                <div class="logofooter"> سه‌ماهی</div>
+                <p>گروه سه‌ماهی، مجموعه از افراد جوان و باانگیزه است که با تلفیق توانایی‌های فنی و هنری خود به شما
+                    در تولید محتوای مناسب کسب و کار شما کمک می‌کنند. سه‌ماهی با در نظر گرفتن شرایط جدید فضای رسانه
+                    همواره بهترین محتوا را برای کانال‌های مناسب تبلیغات شما اعم از شبکه‌های اجتماعی و سایر فضاهای
+                    مجازی فراهم می‌کند.</p>
+
+                <p><i class="fa fa-map-pin"></i>تهران،‌ میدان صنعت،‌اول بلوار فرحزادی، خیابان سیف، کوچه دوم،‌ پلاک
+                    ۶، طبقه‌ی دوم</p>
+
+                <p><i class="fa fa-phone"></i> شماره تماس: ۸۸۷۷۴۴۳۳ (۰۲۱) </p>
+
+                <p><i class="fa fa-envelope"></i> پست الکترونیکی: info@3mahi.com</p>
+
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">خدمات</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">ساخت مستند</a></li>
+                    <li><a href="#">محتوای شبکه های اجتماعی</a></li>
+                    <li><a href="#">تیزر تبلیغاتی</a></li>
+                    <li><a href="#">عکاسی</a></li>
+                    <li><a href="#">عکاسی ۳۶۰ درجه- تور مجازی </a></li>
+                    <li><a href="#">برنامه سازی</a></li>
+                    <li><a href="#">برند سازی تصویری</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">لینک‌های مهم</h6>
+                <ul class="footer-ul">
+                    <li><a href="#">تعرفه</a></li>
+                    <li><a href="#">نمونه کار</a></li>
+                    <li><a href="#">درباره سه ماهی</a></li>
+                    <li><a href="#">وبلاگ</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                    <li><a href="#">عضویت در خبرنامه</a></li>
+                </ul>
+            </div>
+            <!--<div class="col-md-3 col-sm-6 paddingtop-bottom pull-right">
+                <h6 class="heading7">آخرین یادداشت‌ها</h6>
+                <div class="post">
+                    <p>همکاری با اقامت ۲۴ <span>۳ آذر ۹۵</span></p>
+                    <p>مستندهای سه‌ماهی رکورد بازدید مستندهای جشنواره وب را شکست <span>۲ اسفند ۹۶</span></p>
+                    <p>عنوان پست دیگر <span>۱ اردیبهشت ۹۶</span></p>
+                </div>
+            </div>-->
+            <div class="col-md-3 col-sm-6 paddingtop-bottom pull-right">
+                <div class="fb-page" data-href="https://www.facebook.com/facebook"
+                     data-tabs="timeline"
+                     data-height="300" data-small-header="false" style="margin-bottom:15px;"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote class="social" cite="http://www.aparat.com/threefish">
+                            <a href="http://www.aparat.com/threefish" target="_blank">
+                                <img class="social-logo" width="19" src="img/logos/aparat_logo_alt.png">
+                                <span class="social-title">آپارات</span>
+                            </a>
+                        </blockquote>
+                        <blockquote class="social" cite="http://www.telegram.me/threefish" target="_blank">
+                            <a href="http://www.telegram.me/threefish">
+                                <i class="fa fa-telegram social-logo"></i>
+                                <span class="social-title">تلگرام</span>
+                            </a>
+                        </blockquote>
+                        <blockquote class="social" cite="https://www.instagram.com/3fishgroup/" target="_blank">
+                            <a href="http://www.aparat.com/threefish">
+                                <i class="fa fa-instagram social-logo"></i>
+                                <span class="social-title">اینستاگرام</span>
+                            </a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-sm-6">
+            <p>© ۱۳۹۶ - تمام حقوق این سایت برای گروه سه‌ماهی محفوظ است.</p>
+        </div>
+        <div class="col-sm-6">
+            <ul class="bottom_ul">
+                <li><a href="#">سه ماهی</a></li>
+                <li><a href="#">درباره‌ی ما</a></li>
+                <li><a href="#">وبلاگ</a></li>
+                <li><a href="#">سوالات متداول</a></li>
+                <li><a href="#">تماس با ما</a></li>
+                <li><a href="#">نقشه‌ی سایت</a></li>
+            </ul>
+        </div>
     </div>
 </div>

@@ -24,6 +24,16 @@
 				templateUrl: 'app/components/home/home.html',
 				url: '/'
 			})
+				.state('root.team', {
+					controller: 'TeamController',
+					controllerAs: 'vm',
+					data: {
+						roles: []
+					},
+					resolve: {},
+					templateUrl: 'app/components/team/team.html',
+					url: '/team'
+			})
 		
 		;
 		$urlRouterProvider.otherwise('/');
