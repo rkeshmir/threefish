@@ -33,6 +33,16 @@
 					resolve: {},
 					templateUrl: 'app/components/team/team.html',
 					url: '/team'
+				})
+				.state('root.blog', {
+					controller: 'BlogController',
+					controllerAs: 'vm',
+					data: {
+						roles: []
+					},
+					resolve: {},
+					templateUrl: 'app/components/blog/blog.html',
+					url: '/blog'
 			})
 		
 		;

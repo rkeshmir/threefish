@@ -3,10 +3,10 @@
 
     angular
         .module('app')
-        .controller('TeamController', TeamController);
+        .controller('BlogController', BlogController);
 
     /** @ngInject */
-    function TeamController($document, $translate, $timeout, $rootScope, $uibModal, NgMap) {
+    function BlogController($document, $translate, $timeout, $rootScope, $uibModal, NgMap) {
         var firstLogin = $document[0].cookie.replace(
             /(?:(?:^|.*;\s*)firstLogin\s*\=\s*([^;]*).*$)|^.*$/, '$1'
         );
@@ -77,16 +77,19 @@
         vm.blogs = [
             {
                 title: "همکاری با اقامت۲۴",
+                date: "16 آبان 1396",
                 lead: "                    این مرکز با هدف تحقق شعار «رزرو مکان اقامتی قبل از سفر» که از دغدغه های سازمان میراث فرهنگی و گردشگری بوده است، طراحی و راه اندازی شد.",
                 image: "img/blog/700-400-2.jpg"
             },
             {
                 title: "عنوان پست",
+                date: "16 آبان 1396",
                 lead: "خلاصه‌ی پست در دو یا نهایتاً سه خط به طوری که زیاد طولانی نباشد. می‌توان در انتهای مطلب لینک به ادامه‌ی مطلب قرار داد یا با کلیک بر روی تصویر به ادامه‌ی مطلب رفت",
                 image: "img/~text.png"
             },
             {
                 title: "عنوان پست",
+                date: "16 آبان 1396",
                 lead: "                    خلاصه‌ی پست در دو یا نهایتاً سه خط به طوری که زیاد طولانی نباشد. می‌توان در انتهای مطلب لینک به ادامه‌ی مطلب قرار داد یا با کلیک بر روی تصویر به ادامه‌ی مطلب رفت",
                 image: "img/blog/460072-love-ballons.jpg"
             }
