@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">
+            <a class="navbar-brand" ui-sref="root.home">
                 <img src="img/logo-new.png" class="img-responsive">
             </a>
         </div>
@@ -240,439 +240,20 @@
         <div class="row lg-xl-hidden accordion">
             <div class="col-sm-3 col-md-3">
                 <uib-accordion close-others="true">
-                    <uib-accordion-group>
+                    <uib-accordion-group ng-repeat="service in vm.services">
                         <uib-accordion-heading>
                             <h4 class="panel-title">
                                 <a>
                                     <i class="fa fa-star"></i>
-                                    برندسازی
+                                    <span ng-bind="service.name"></span>
                                 </a>
                             </h4>
                         </uib-accordion-heading>
-                        به زودی ...
-                    </uib-accordion-group>
-                    <uib-accordion-group>
-                        <uib-accordion-heading>
-                            <h4 class="panel-title">
-                                <a>
-                                    <i class="fa fa-star"></i>
-                                    محتوای شبکه‌ی اجتماعی
-                                </a>
-                            </h4>
-                        </uib-accordion-heading>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#campaign-a" aria-controls="campaign-a" role="tab"
-                                           data-toggle="tab">
-                                            کمپین A
-                                        </a></li>
-                                    <li role="presentation">
-                                        <a href="#campaign-b" aria-controls="campaign-b" role="tab"
-                                           data-toggle="tab">
-                                            کمپین B
-                                        </a></li>
-                                    <li role="presentation">
-                                        <a href="#campaign-c" aria-controls="campaign-c" role="tab"
-                                           data-toggle="tab">
-                                            کمپین C
-                                        </a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#campaign-d" aria-controls="campaign-d" role="tab"
-                                           data-toggle="tab">
-                                            کمپین D
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="campaign-a-t">
-                                        <div class="list-group">
-                                            <a class="list-group-item">
-                                                <b>
-                                                    هدف:
-                                                </b>
-                                                <ul>
-                                                    <li>تبلیغات فشرده برای بیشتر کردن سهم بازار شما</li>
-                                                    <li>معرفی محصول جدید</li>
-                                                    <li>رسیدن به هدف مشخص در فروش</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    محتوای پست‌های روزانه:
-                                                </b><br>
-                                                <i>
-                                                    هر روز انتشار سه پست، به مدت یک ماه، بر اساس استراتژی
-                                                    شبکه‌های اجتماعی کسب و کار شما
-                                                </i><br>
-                                                <span>
-                                    ساختار ۹۰ پست به مدت یک ماه:
-                                </span><br>
-                                                <ul>
-                                                    <li>۱۲ فیلم</li>
-                                                    <li>۲۶ عکس</li>
-                                                    <li>۲۶ متن</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    تیزر
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        شروع هر هفته با یک تیزر
-                                                    </li>
-                                                    <li>
-                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
-                                                    </li>
-                                                    <li>
-                                                        مدت زمان تولید تیزرها حداکثر دو روز
-                                                    </li>
-                                                    <li>
-                                                        خروجی نهایی حداکثر یک دقیقه
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    تعداد نمایش
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        اولین روز از هفته‌ی دوم کمپین
-                                                    </li>
-                                                    <li>
-                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="campaign-b-t">
-                                        <div class="list-group">
-                                            <a class="list-group-item">
-                                                <b>
-                                                    هدف:
-                                                </b>
-                                                <ul>
-                                                    <li>شروع برندسازی در شبکه‌ی اجتماعی</li>
-                                                    <li>توسعه‌ی سهم بازار</li>
-                                                    <li>افزایش فالوور</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    محتوای پست‌های روزانه:
-                                                </b><br>
-                                                <i>
-                                                    هر روز انتشار دو پست، به مدت سه ماه، بر اساس استراتژی
-                                                    شبکه‌های اجتماعی کسب و کار شما
-                                                </i><br>
-                                                <span>
-                                    ساختار ۱۸۰ پست به مدت یک ماه:
-                                </span><br>
-                                                <ul>
-                                                    <li>۲۴ فیلم</li>
-                                                    <li>۵۲ عکس</li>
-                                                    <li>۵۲ متن</li>
-                                                    <li>۵۲ موشن‌گرافیک/اینفوگرافیک</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>تیزر:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        ساخت دو تیزر
-                                                    </li>
-                                                    <li>
-                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
-                                                    </li>
-                                                    <li>
-                                                        مدت زمان تولید تیزرها حداکثر دو روز
-                                                    </li>
-                                                    <li>
-                                                        خروجی نهایی حداکثر یک دقیقه
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    تعداد نمایش:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        یک تیزر در اولین روز هفته‌ی دوم و دیگری در اولین روز
-                                                        از هفته‌ی هفتم کمپین
-                                                    </li>
-                                                    <li>
-                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
-                                                    </li>
-                                                    <li>
-                                                        گزینه‌ی نمایش فقط برای تیز
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="campaign-c-t">
-                                        <div class="list-group">
-                                            <a class="list-group-item">
-                                                <b>
-                                                    هدف:
-                                                </b>
-                                                <ul>
-                                                    <li>تثبیت برند در شبکه‌ی اجتماعی</li>
-                                                    <li>توسعه‌ی تدریجی سهم بازار</li>
-                                                    <li>افزایش فالوور</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    محتوای پست‌های روزانه:
-                                                </b><br>
-                                                <i>
-                                                    هر روز انتشار دو پست، به مدت شش ماه، بر اساس استراتژی
-                                                    شبکه‌های اجتماعی کسب و کار شما
-                                                </i><br>
-                                                <span>
-                                    ساختار ۳۶۰ پست به مدت سه ماه:
-                                </span><br>
-                                                <ul>
-                                                    <li>۴۸ فیلم</li>
-                                                    <li>۱۰۴ عکس</li>
-                                                    <li>۱۰۴ متن</li>
-                                                    <li>۱۰۴ موشن‌گرافیک/اینفوگرافیک</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>تیزر:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        ساخت دو تیزر
-                                                    </li>
-                                                    <li>
-                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
-                                                    </li>
-                                                    <li>
-                                                        مدت زمان تولید تیزرها حداکثر دو روز
-                                                    </li>
-                                                    <li>
-                                                        خروجی نهایی حداکثر یک دقیقه
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    تعداد نمایش:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        هر ماه یک تیزر
-                                                    </li>
-                                                    <li>
-                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
-                                                    </li>
-                                                    <li>
-                                                        گزینه‌ی نمایش فقط برای تیز
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane" id="campaign-d-t">
-                                        <div class="list-group">
-                                            <a class="list-group-item">
-                                                <b>
-                                                    هدف:
-                                                </b>
-                                                <ul>
-                                                    <li>رونمایی از برند در شبکه‌های اجتماعی</li>
-                                                    <li>آزمایش شبکه‌های اجتماعی و آشنایی با رفتار
-                                                        مصرف‌کننده
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    محتوای پست‌های روزانه:
-                                                </b><br>
-                                                <i>
-                                                    هر روز انتشار یک پست، به مدت یک ماه، بر اساس استراتژی
-                                                    شبکه‌های اجتماعی کسب و کار شما
-                                                </i><br>
-                                                <span>
-                                    ساختار ۳۰ پست به مدت یک ماه:
-                                </span><br>
-                                                <ul>
-                                                    <li>۴ فیلم</li>
-                                                    <li>۹ عکس</li>
-                                                    <li>۹ متن</li>
-                                                    <li>۸ موشن‌گرافیک/اینفوگرافیک</li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>تیزر:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        ساخت یک تیزر
-                                                    </li>
-                                                    <li>
-                                                        تمرکز بر روی تبلیغات غیرمستقیم و تأثیرگذار
-                                                    </li>
-                                                    <li>
-                                                        مدت زمان تولید تیزرها حداکثر دو روز
-                                                    </li>
-                                                    <li>
-                                                        خروجی نهایی حداکثر یک دقیقه
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                            <a class="list-group-item">
-                                                <b>
-                                                    تعداد نمایش:
-                                                </b>
-                                                <ul>
-                                                    <li>
-                                                        یک تیزر در اولین روز از هفته‌ی دوم
-                                                    </li>
-                                                    <li>
-                                                        تضمین نمایش هر تیزر حداقل برای یک میلیون نفر
-                                                    </li>
-                                                    <li>
-                                                        گزینه‌ی نمایش فقط برای تیز
-                                                    </li>
-                                                </ul>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941881702738219-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/5DfRk?data[rnddiv]=14941881702738219&data[responsive]=yes"></script>
-                                </div>
-                            </div>
+                        <div class="service-xs">
+                            <h3 ng-bind="service.lead"></h3>
+                            <img ng-src="{{service.picture}}" align="..." class="img-responsive">
+                            <p ng-bind="service.description" class="-align-justify"></p>
                         </div>
-                    </uib-accordion-group>
-                    <uib-accordion-group>
-                        <uib-accordion-heading>
-                            <h4 class="panel-title">
-                                <a>
-                                    <i class="fa fa-star"></i>
-                                    برنامه‌سازی
-                                </a>
-                            </h4>
-                        </uib-accordion-heading>
-                        به زودی ...
-                    </uib-accordion-group>
-                    <uib-accordion-group>
-                        <uib-accordion-heading>
-                            <h4 class="panel-title">
-                                <a>
-                                    <i class="fa fa-star"></i>
-                                    مستندسازی
-                                </a>
-                            </h4>
-                        </uib-accordion-heading>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="list-group">
-                                    <a class="list-group-item active">
-                                        انواع مستند
-                                    </a>
-                                    <a class="list-group-item">
-                                        علمی
-                                    </a>
-                                    <a class="list-group-item">صنعتی</a>
-                                    <a class="list-group-item">پروژه</a>
-                                    <a class="list-group-item">گردشگری</a>
-                                    <a class="list-group-item">کارگاه</a>
-                                    <a class="list-group-item">جشنواره</a>
-                                    <a class="list-group-item">رویداد</a>
-                                    <a class="list-group-item">رونمایی</a>
-                                    <a class="list-group-item">بازگشایی</a>
-                                    <a class="list-group-item">همایش</a>
-                                    <a class="list-group-item">همایش</a>
-                                    <a class="list-group-item">نمایشگاه</a>
-                                    <a class="list-group-item">کنگره</a>
-                                    <a class="list-group-item">نشست خبری</a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941897085816872">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/LrE23?data[rnddiv]=14941897085816872&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941897629444250-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/7pt4H?data[rnddiv]=14941897629444250&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941897833736646-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/0PQnV?data[rnddiv]=14941897833736646&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941898167245419-id2">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/letmN?data[rnddiv]=14941898167245419&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941898475887016-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/oncZf?data[rnddiv]=14941898475887016&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941898835426226-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/Bpdm5?data[rnddiv]=14941898835426226&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941899129230635-id2">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/GTt6g?data[rnddiv]=14941899129230635&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941899465249022-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/3ro8S?data[rnddiv]=14941899465249022&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                            <div class="col-md-6 video-container">
-                                <div id="14941905925296566-id">
-                                    <script type="text/JavaScript"
-                                            src="https://www.aparat.com/embed/L8rH2?data[rnddiv]=14941905925296566&data[responsive]=yes"></script>
-                                </div>
-                            </div>
-                        </div>
-                    </uib-accordion-group>
-                    <uib-accordion-group>
-                        <uib-accordion-heading>
-                            <h4 class="panel-title">
-                                <a>
-                                    <i class="fa fa-star"></i>
-                                    تیزر تبلیغاتی
-                                </a>
-                            </h4>
-                        </uib-accordion-heading>
-                        به زودی ...
                     </uib-accordion-group>
                 </uib-accordion>
             </div>
@@ -947,81 +528,119 @@
         </div>
         <div class="row">
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://www.iacap.ir/fa/">
-                    <img src="img/customers/iranian-academy-of-child&adolescent-psychology.gif" width="110"
+                <a href="">
+                    <img src="img/customers/01_logo.png" width="110"
                          class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://black-light-land.ir/">
-                    <img src="img/customers/black-light-land.jpg" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/02_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="https://www.instagram.com/kandu_theater/">
-                    <img src="img/customers/kandoo-theatr.jpg" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/03_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="https://www.tiwall.com/">
-                    <img src="img/customers/tiwall.png" width="110" class="img-responsive img-centered" alt="">
+                <a href="">
+                    <img src="img/customers/04_logo.png" width="110" class="img-responsive img-centered" alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://www.iwmf.ir/">
-                    <img src="img/customers/iran-web-festival.png" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/05_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://www.nano.ir/">
-                    <img src="img/customers/nano-iran.jpg" width="110" class="img-responsive img-centered" alt="">
+                <a href="">
+                    <img src="img/customers/06_logo.png" width="110" class="img-responsive img-centered" alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="https://realitygame.me/1/">
-                    <img src="img/customers/farbod_engare.jpg" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/07_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://tesc.ir/">
-                    <img src="img/customers/export-corridor.jpg" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/08_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://www.ibtc.ir/">
-                    <img src="img/customers/commerce-school.png" width="110" class="img-responsive img-centered"
+                <a href="">
+                    <img src="img/customers/09_logo.png" width="110" class="img-responsive img-centered"
                          alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="https://ictu.qiau.ac.ir/">
-                    <img src="img/customers/qazvin-roshd-center.png" width="110" class="img-responsive img-centered"
-                         alt="">
+                <a href="">
+                    <img src="img/customers/10_logo.png" width="110"
+                         class="img-responsive img-centered" alt="">
                 </a>
             </div>
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="https://www.isti.ir/">
-                    <img src="img/customers/moavenat-elmi-fanavari.jpg" width="110"
+                <a href="">
+                    <img src="img/customers/11_logo.png" width="110"
                          class="img-responsive img-centered" alt="">
                 </a>
             </div>
 
             <div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://www.aparat.com/mehrtan/%D9%85%D9%87%D8%B1%D8%AA%D9%86">
-                    <img src="img/customers/mehrtan.jpg" width="110" class="img-responsive img-centered" alt="">
+                <a href="">
+                    <img src="img/customers/12_logo.png" width="110" class="img-responsive img-centered" alt="">
                 </a>
             </div>
-            <!--<div class="client col-md-3  col-sm-3 col-xs-4">
-                <a href="http://11iran.ir/">
-                    <img src="img/brands/kalleh.png" width="110" class="img-responsive img-centered" alt="">
+
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/13_logo.png" width="110" class="img-responsive img-centered" alt="">
                 </a>
-            </div>-->
+            </div>
+
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/14_logo.png" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/15_logo.png" width="110" class="img-responsive img-centered"
+                         alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/16_logo.png" width="110"
+                         class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/17_logo.png" width="110"
+                         class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/18_logo.png" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
+
+            <div class="client col-md-3  col-sm-3 col-xs-4">
+                <a href="">
+                    <img src="img/customers/19_logo.png" width="110" class="img-responsive img-centered" alt="">
+                </a>
+            </div>
         </div>
     </div>
 </aside>
