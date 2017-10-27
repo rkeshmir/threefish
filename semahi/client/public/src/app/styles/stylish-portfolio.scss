@@ -822,3 +822,14 @@ h4 strong {
 .m-t-3 {
     margin-top: 3rem;
 }
+
+#team {
+    .col-xs-12 {
+        img {
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+    }
+}
